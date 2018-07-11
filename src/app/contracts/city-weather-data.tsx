@@ -5,4 +5,5 @@ export interface CityWeatherData {
     humidity: number;
     wind: number;
     description: string;
+    weather: string;
 }

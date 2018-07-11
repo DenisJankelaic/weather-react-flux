@@ -46,16 +46,34 @@ class WeatherContainerClass extends React.Component<{}, State> {
             }
             case Abstractions.ItemStatus.Failed: {
                 return (
-                    <div>
-                        Loading failed.
-                    </div>
+                    <div className="pending">
+                        <div className="load">
+                            <div className="img">
+                                <img src=
+                                "http://gifimage.net/wp-content/uploads/2017/01/Excited-GIF-Image-for-Whatsapp-and-Facebook-51.gif" />
+                            </div>
+                            <div className="text" >Loading failed</div>
+                        </div></div>
                 );
             }
-            case Abstractions.ItemStatus.Init:
+            case Abstractions.ItemStatus.Init: {
+                return (
+                    <div className="pending">
+                        <div className="load">
+                            <div className="img">
+                                <img
+                                    src="http://www.microcreatives.com/wp-content/uploads/2016/01/animat-pencil-512x512-color.gif?x70538" />
+                            </div>
+                        </div></div>
+                );
+            }
             case Abstractions.ItemStatus.Pending: {
                 return (
                     <div className="pending">
-                        <img src="https://i.pinimg.com/originals/3d/1b/73/3d1b739fb2546948f207d2be7ae1b105.gif"/>
+                        <div className="load">
+                            <div className="img">
+                                <img src="https://i.pinimg.com/originals/3d/1b/73/3d1b739fb2546948f207d2be7ae1b105.gif" />
+                            </div></div>
                     </div>
                 );
             }

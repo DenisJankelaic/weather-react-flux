@@ -26,7 +26,8 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
                 temperature: 0,
                 humidity: 0,
                 wind: 0,
-                description: ""
+                description: "",
+                weather: ""
             },
             status: Abstractions.ItemStatus.Init
         };
@@ -41,7 +42,8 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
                 description: action.Data.weather[0].description,
                 humidity: action.Data.main.humidity,
                 temperature: action.Data.main.temp,
-                wind: action.Data.wind.speed
+                wind: action.Data.wind.speed,
+                weather: action.Data.weather[0].main
             },
             status: Abstractions.ItemStatus.Loaded
         };
