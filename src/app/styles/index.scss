@@ -1,0 +1,15 @@
+.weather-window {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 512px;
+    
+    .input-view {
+        max-height: 100px;
+        min-height: 50px;
+        min-width: 250px;
+        max-width: 500px;
+    }
+    .weather-data {}
+    
+}
