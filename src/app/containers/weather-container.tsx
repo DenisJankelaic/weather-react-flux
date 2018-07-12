@@ -4,24 +4,37 @@ import { Container } from "flux/utils";
 import { WeatherStore } from "../stores/weather-store";
 import { CityWeatherData } from "../contracts/city-weather-data";
 import { Abstractions } from "simplr-flux";
+
 import "../styles/weather-container.css";
 interface State {
     cityData: CityWeatherData;
     status: Abstractions.ItemStatus;
+    long: number;
+    lat: number;
 }
+
+// interface Geolocation {
+//     longitude: number;
+//     latitude: number;
+
+// }
 
 class WeatherContainerClass extends React.Component<{}, State> {
     public static getStores(): Container.StoresList {
         return [WeatherStore];
     }
-
     public static calculateState(state: State): State {
         return {
             cityData: WeatherStore.getState().cityData,
-            status: WeatherStore.getState().status
+            status: WeatherStore.getState().status,
+            long: WeatherStore.getState().long,
+            lat: WeatherStore.getState().lat
         };
     }
+
     public render(): JSX.Element {
+        console.log(this.state.long);
+        console.log(this.state.lat);
         switch (this.state.status) {
             case Abstractions.ItemStatus.Loaded: {
                 return (
@@ -32,7 +45,7 @@ class WeatherContainerClass extends React.Component<{}, State> {
                             <div className="country">
                                 {this.state.cityData.country}</div>
                             <div className="desc">
-                                {this.state.cityData.description}</div></div>
+                                {this.state.cityData.weather}</div></div>
                         <div className="second-row">
                             <div className="temp">
                                 {this.state.cityData.temperature}°</div>
@@ -50,7 +63,7 @@ class WeatherContainerClass extends React.Component<{}, State> {
                         <div className="load">
                             <div className="img">
                                 <img src=
-                                "http://gifimage.net/wp-content/uploads/2017/01/Excited-GIF-Image-for-Whatsapp-and-Facebook-51.gif" />
+                                    "http://gifimage.net/wp-content/uploads/2017/01/Excited-GIF-Image-for-Whatsapp-and-Facebook-51.gif" />
                             </div>
                             <div className="text" >Loading failed</div>
                         </div></div>

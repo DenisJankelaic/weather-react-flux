@@ -11,7 +11,52 @@ SystemJS.config({
           "loader": "css"
         }
       }
+    },
+    "npm:office-ui-fabric-react@5.67.0": {
+      "map": {
+        "prop-types": "npm:prop-types@15.6.1",
+        "tslib": "npm:tslib@1.9.0",
+        "@uifabric/merge-styles": "npm:@uifabric/merge-styles@5.13.0",
+        "@uifabric/icons": "npm:@uifabric/icons@5.6.0",
+        "@uifabric/styling": "npm:@uifabric/styling@5.20.0",
+        "@uifabric/utilities": "npm:@uifabric/utilities@5.19.1",
+        "@microsoft/load-themed-styles": "npm:@microsoft/load-themed-styles@1.7.43"
+      }
+    },
+    "npm:@uifabric/styling@5.20.0": {
+      "map": {
+        "@microsoft/load-themed-styles": "npm:@microsoft/load-themed-styles@1.7.43",
+        "@uifabric/utilities": "npm:@uifabric/utilities@5.19.1",
+        "@uifabric/merge-styles": "npm:@uifabric/merge-styles@5.13.0",
+        "tslib": "npm:tslib@1.9.0"
+      }
+    },
+    "npm:@uifabric/icons@5.6.0": {
+      "map": {
+        "@uifabric/styling": "npm:@uifabric/styling@5.20.0",
+        "tslib": "npm:tslib@1.9.0"
+      }
+    },
+    "npm:@uifabric/merge-styles@5.13.0": {
+      "map": {
+        "tslib": "npm:tslib@1.9.0"
+      }
+    },
+    "npm:@uifabric/utilities@5.19.1": {
+      "map": {
+        "@microsoft/load-themed-styles": "npm:@microsoft/load-themed-styles@1.7.43",
+        "@uifabric/merge-styles": "npm:@uifabric/merge-styles@5.13.0",
+        "prop-types": "npm:prop-types@15.6.1",
+        "tslib": "npm:tslib@1.9.0"
+      }
     }
+  },
+  map: {
+    "dateformat": "npm:dateformat@3.0.3",
+    "flux": "npm:flux@3.1.3",
+    "history": "npm:history@4.7.2",
+    "immutable": "npm:immutable@3.8.2",
+    "office-ui-fabric-react": "npm:office-ui-fabric-react@5.67.0"
   }
 });
 
@@ -28,16 +73,12 @@ SystemJS.config({
     "constants": "npm:jspm-nodelibs-constants@0.2.1",
     "crypto": "npm:jspm-nodelibs-crypto@0.2.1",
     "css": "npm:systemjs-plugin-css@0.1.36",
-    "dateformat": "npm:dateformat@3.0.3",
     "domain": "npm:jspm-nodelibs-domain@0.2.1",
     "events": "npm:jspm-nodelibs-events@0.2.2",
-    "flux": "npm:flux@3.1.3",
     "fs": "npm:jspm-nodelibs-fs@0.2.1",
-    "history": "npm:history@4.7.2",
+    "geolocation": "npm:geolocation@0.2.0",
     "http": "npm:jspm-nodelibs-http@0.2.0",
     "https": "npm:jspm-nodelibs-https@0.2.2",
-    "immutable": "npm:immutable@3.8.2",
-    "office-ui-fabric-react": "npm:office-ui-fabric-react@5.67.0",
     "os": "npm:jspm-nodelibs-os@0.2.2",
     "path": "npm:jspm-nodelibs-path@0.2.3",
     "process": "npm:jspm-nodelibs-process@0.2.1",
@@ -50,6 +91,7 @@ SystemJS.config({
     "stream": "npm:jspm-nodelibs-stream@0.2.1",
     "string_decoder": "npm:jspm-nodelibs-string_decoder@0.2.2",
     "tslib": "npm:tslib@1.9.0",
+    "tty": "npm:jspm-nodelibs-tty@0.2.1",
     "url": "npm:jspm-nodelibs-url@0.2.1",
     "util": "npm:jspm-nodelibs-util@0.2.2",
     "vm": "npm:jspm-nodelibs-vm@0.2.1",
@@ -462,44 +504,6 @@ SystemJS.config({
         "@types/react": "npm:@types/react@16.0.40"
       }
     },
-    "npm:office-ui-fabric-react@5.67.0": {
-      "map": {
-        "prop-types": "npm:prop-types@15.6.1",
-        "tslib": "npm:tslib@1.9.0",
-        "@uifabric/merge-styles": "npm:@uifabric/merge-styles@5.13.0",
-        "@uifabric/icons": "npm:@uifabric/icons@5.6.0",
-        "@uifabric/styling": "npm:@uifabric/styling@5.20.0",
-        "@uifabric/utilities": "npm:@uifabric/utilities@5.19.1",
-        "@microsoft/load-themed-styles": "npm:@microsoft/load-themed-styles@1.7.43"
-      }
-    },
-    "npm:@uifabric/styling@5.20.0": {
-      "map": {
-        "@microsoft/load-themed-styles": "npm:@microsoft/load-themed-styles@1.7.43",
-        "@uifabric/utilities": "npm:@uifabric/utilities@5.19.1",
-        "@uifabric/merge-styles": "npm:@uifabric/merge-styles@5.13.0",
-        "tslib": "npm:tslib@1.9.0"
-      }
-    },
-    "npm:@uifabric/icons@5.6.0": {
-      "map": {
-        "@uifabric/styling": "npm:@uifabric/styling@5.20.0",
-        "tslib": "npm:tslib@1.9.0"
-      }
-    },
-    "npm:@uifabric/merge-styles@5.13.0": {
-      "map": {
-        "tslib": "npm:tslib@1.9.0"
-      }
-    },
-    "npm:@uifabric/utilities@5.19.1": {
-      "map": {
-        "@microsoft/load-themed-styles": "npm:@microsoft/load-themed-styles@1.7.43",
-        "@uifabric/merge-styles": "npm:@uifabric/merge-styles@5.13.0",
-        "prop-types": "npm:prop-types@15.6.1",
-        "tslib": "npm:tslib@1.9.0"
-      }
-    },
     "npm:readable-stream@2.3.6": {
       "map": {
         "inherits": "npm:inherits@2.0.3",
@@ -532,6 +536,12 @@ SystemJS.config({
         "prop-types": "npm:prop-types@15.6.1",
         "loose-envify": "npm:loose-envify@1.3.1",
         "object-assign": "npm:object-assign@4.1.1"
+      }
+    },
+    "npm:geolocation@0.2.0": {
+      "map": {
+        "debug": "npm:debug@0.7.4",
+        "inherits": "npm:inherits@2.0.3"
       }
     }
   }

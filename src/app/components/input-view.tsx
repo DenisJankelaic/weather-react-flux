@@ -39,10 +39,14 @@ export class InputView extends React.Component<{}, State> {
             inputCityName: ""
         });
     }
+    protected InitGeolocation(): void {
+        ActionsCreators.InitGeolocationDispatcher();
+    }
 
     public render(): JSX.Element {
         return (
             <p>
+            {this.InitGeolocation()}
             <span className="input">
                 <input
                     onChange={this.CityChange}

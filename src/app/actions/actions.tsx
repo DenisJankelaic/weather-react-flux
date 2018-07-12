@@ -9,11 +9,12 @@ export class SubmitActionSucceeded {
 }
 export class SubmitActionFailed { }
 export class SubmitActionPending { }
-
-export class SetDataAction {
-    constructor(private data: any) {
+export class InitGeolocation {
+    constructor(private long: number, private lat: number) { }
+    public get Long(): number {
+        return this.long;
     }
-    public get Data(): any {
-        return this.data;
+    public get Lat(): number {
+        return this.lat;
     }
-}
+ }

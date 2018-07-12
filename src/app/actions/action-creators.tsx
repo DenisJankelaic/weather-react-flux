@@ -4,18 +4,18 @@ import {
     SubmitActionFailed,
     SubmitActionSucceeded,
     SubmitActionPending,
-    SetDataAction
+    InitGeolocation
 } from "./actions";
 import { RootObject } from "../contracts/weather";
+import { API_KEY } from "../api-key";
 
 export namespace ActionsCreators {
     export async function SubmitDispatcher(city: string): Promise<void> {
-        const apikey = "02ae0ccb07584d6cb6ea8f321bd743bc";
         Dispatcher.dispatch(new SubmitActionPending());
         // PROBLEM: My catch block doesn't detect failure in fetching.
         // TODO: Ask better option for `try{}catch{}`.
         try {
-            const apicall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`);
+            const apicall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
             if (apicall.status === 200) {
                 const data: RootObject = await apicall.json();
                 Dispatcher.dispatch(new SubmitActionSucceeded(data));
@@ -26,7 +26,9 @@ export namespace ActionsCreators {
             Dispatcher.dispatch(new SubmitActionFailed());
         }
     }
-    export function SetDataDispatcher(data: any): void {
-        Dispatcher.dispatch(new SetDataAction(data));
+    export async function InitGeolocationDispatcher():  Promise<void> {
+        await navigator.geolocation.getCurrentPosition(position => {
+            Dispatcher.dispatch(new InitGeolocation(position.coords.longitude, position.coords.latitude));
+        });
     }
 }
