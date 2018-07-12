@@ -7,6 +7,13 @@ export class SubmitActionSucceeded {
         return this.data;
     }
 }
+export class SubmitGeolocation {
+    constructor(private data: RootObject) {
+    }
+    public get Data(): RootObject {
+        return this.data;
+    }
+}
 export class SubmitActionFailed { }
 export class SubmitActionPending { }
 export class InitGeolocation {

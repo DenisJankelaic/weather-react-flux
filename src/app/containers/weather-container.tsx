@@ -12,13 +12,6 @@ interface State {
     long: number;
     lat: number;
 }
-
-// interface Geolocation {
-//     longitude: number;
-//     latitude: number;
-
-// }
-
 class WeatherContainerClass extends React.Component<{}, State> {
     public static getStores(): Container.StoresList {
         return [WeatherStore];
@@ -33,8 +26,6 @@ class WeatherContainerClass extends React.Component<{}, State> {
     }
 
     public render(): JSX.Element {
-        console.log(this.state.long);
-        console.log(this.state.lat);
         switch (this.state.status) {
             case Abstractions.ItemStatus.Loaded: {
                 return (

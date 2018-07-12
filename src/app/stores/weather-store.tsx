@@ -6,7 +6,6 @@ import {
     InitGeolocation
 } from "../actions/actions";
 import { CityWeatherData } from "../contracts/city-weather-data";
-import { Action } from "../../../node_modules/@types/history";
 
 interface StoreState {
     cityData: CityWeatherData;
@@ -39,14 +38,7 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             status: Abstractions.ItemStatus.Init
         };
     }
-    private onInitGeolocation: ActionHandler<InitGeolocation, StoreState> = (action, state) => {
-        const nextState: StoreState = {
-            ...state,
-            long: action.Long,
-            lat: action.Lat
-        };
-        return nextState;
-    }
+
     private onSubmitActionSucceeded: ActionHandler<SubmitActionSucceeded, StoreState> = (action, state) => {
         const nextState: StoreState = {
             ...state,
@@ -74,6 +66,13 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             ...state,
             status: Abstractions.ItemStatus.Pending
         })
-
+    private onInitGeolocation: ActionHandler<InitGeolocation, StoreState> = (action, state) => {
+        const nextState: StoreState = {
+            ...state,
+            long: action.Long,
+            lat: action.Lat
+        };
+        return nextState;
+    }
 }
 export const WeatherStore = new WeatherStoreClass();

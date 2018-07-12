@@ -3,7 +3,9 @@
     align-items: center;
     flex-direction: column;
     min-width: 512px;
-    
+    .geolocation-view{
+        width: 100%;
+    }
     .input-view {
         max-height: 100px;
         min-height: 50px;
