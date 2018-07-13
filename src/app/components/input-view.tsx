@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { ActionsCreators } from "../actions/action-creators";
-import "../styles/input-view.css";
+import "./input-view.css";
 
 interface State {
     inputCityName: string;

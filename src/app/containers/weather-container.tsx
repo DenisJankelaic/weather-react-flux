@@ -5,7 +5,8 @@ import { WeatherStore } from "../stores/weather-store";
 import { CityWeatherData } from "../contracts/city-weather-data";
 import { Abstractions } from "simplr-flux";
 
-import "../styles/weather-container.css";
+import "./weather-container.css";
+import { ActionsCreators } from "../actions/action-creators";
 interface State {
     cityData: CityWeatherData;
     status: Abstractions.ItemStatus;
@@ -24,27 +25,35 @@ class WeatherContainerClass extends React.Component<{}, State> {
             lat: WeatherStore.getState().lat
         };
     }
+    protected SubmitFavorite = (): void => {
+        ActionsCreators.SubmitFavoriteDispatcher(this.state.cityData);
+    }
 
     public render(): JSX.Element {
-        switch (this.state.status) {
+        const { cityData, status } = this.state;
+
+        switch (status) {
             case Abstractions.ItemStatus.Loaded: {
                 return (
                     <div className="weather">
                         <div className="first-row">
                             <div className="city">
-                                {this.state.cityData.city} </div>
+                                {cityData.city} </div>
                             <div className="country">
-                                {this.state.cityData.country}</div>
+                                {cityData.country}</div>
                             <div className="desc">
-                                {this.state.cityData.weather}</div></div>
+                                {cityData.weather}</div></div>
                         <div className="second-row">
                             <div className="temp">
-                                {this.state.cityData.temperature}°</div>
+                                {cityData.temperature}°</div>
                             <div className="right-side">
                                 <div className="humidity">
-                                    Humidity: {this.state.cityData.humidity}%</div>
+                                    Humidity: {cityData.humidity}%</div>
                                 <div className="wind">
-                                    Wind: {this.state.cityData.wind}m/s</div> </div></div>
+                                    Wind: {cityData.wind}m/s</div> </div></div>
+                        <div className="third-row">
+                            <div className="button" onClick={this.SubmitFavorite}>Add to favorites</div>
+                        </div>
                     </div>
                 );
             }

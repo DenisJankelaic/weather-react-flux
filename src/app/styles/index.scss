@@ -1,17 +1,32 @@
 .weather-window {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    min-width: 512px;
-    .geolocation-view{
-        width: 100%;
+    flex-flow: column;
+    .header {
+        .geolocation-view {
+            width: 100%;
+        }
     }
-    .input-view {
-        max-height: 100px;
-        min-height: 50px;
-        min-width: 250px;
-        max-width: 500px;
+    .main {
+        display: flex;
+        flex-flow: row-reverse;
+        .input-city {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            min-width: 512px;
+            .input-view {
+                max-height: 100px;
+                min-height: 50px;
+                min-width: 250px;
+                max-width: 500px;
+            }
+            .weather-data {}
+        }
+        .city-list-view {
+            max-width: 250px;
+            display: flex;
+            align-items: center;
+        }
     }
-    .weather-data {}
-    
 }

@@ -4,7 +4,7 @@ import { ActionsCreators } from "../actions/action-creators";
 
 import { GeolocationStore } from "../stores/geolocation-store";
 import { CityWeatherData } from "../contracts/city-weather-data";
-import "../styles/geolocation-view.css";
+import "./geolocation-view.css";
 
 interface State {
     cityData: CityWeatherData;

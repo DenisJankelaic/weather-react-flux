@@ -1,0 +1,28 @@
+.city-list {
+    display: flex;
+    flex-direction: column;
+    .delete-all {
+        display: flex;
+        justify-content: flex-end;
+        .button {
+            box-shadow: 0px 1px 0px 0px #1c1b18;
+            background: linear-gradient(to bottom, #c56dee 5%, #ccc2a6 100%);
+            border-radius: 15px;
+            border: 2px solid #333029;
+            display: inline-block;
+            cursor: pointer;
+            color: #505739;
+            padding: 5px 5px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #ffffff;
+            &:active {
+                position: relative;
+                top: 1px;
+            }
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

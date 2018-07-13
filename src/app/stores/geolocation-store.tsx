@@ -1,4 +1,4 @@
-import { ReduceStore, ActionHandler, Abstractions } from "simplr-flux";
+import { ReduceStore, ActionHandler } from "simplr-flux";
 import { CityWeatherData } from "../contracts/city-weather-data";
 import {
     InitGeolocation, SubmitGeolocation

@@ -5,10 +5,14 @@ import {
     SubmitActionSucceeded,
     SubmitActionPending,
     InitGeolocation,
-    SubmitGeolocation
+    SubmitGeolocation,
+    SubmitFavorite,
+    DeleteFavorite,
+    DeleteAllFavorites
 } from "./actions";
 import { RootObject } from "../contracts/weather";
 import { API_KEY } from "../api-key";
+import { CityWeatherData } from "../contracts/city-weather-data";
 
 export namespace ActionsCreators {
     export async function SubmitDispatcher(city: string): Promise<void> {
@@ -27,12 +31,14 @@ export namespace ActionsCreators {
             Dispatcher.dispatch(new SubmitActionFailed());
         }
     }
+
     export async function InitGeolocationDispatcher():  Promise<void> {
         await navigator.geolocation.getCurrentPosition(position => {
             Dispatcher.dispatch(new InitGeolocation(position.coords.longitude, position.coords.latitude));
             ActionsCreators.SubmitGeolocationDispatcher(position.coords.longitude, position.coords.latitude);
         });
     }
+
     export async function SubmitGeolocationDispatcher(long: number, lat: number):  Promise<void> {
         try {
             const longitude = long.toFixed(1);
@@ -48,5 +54,14 @@ export namespace ActionsCreators {
         } catch (error) {
             Dispatcher.dispatch(new SubmitActionFailed());
         }
+    }
+    export function SubmitFavoriteDispatcher(data: CityWeatherData): void {
+        Dispatcher.dispatch(new SubmitFavorite(data));
+    }
+    export function DeleteFavoriteDispatcher(data: string): void {
+        Dispatcher.dispatch(new DeleteFavorite(data));
+    }
+    export function DeleteAllFavoritesDispatcher(): void {
+        Dispatcher.dispatch(new DeleteAllFavorites());
     }
 }
