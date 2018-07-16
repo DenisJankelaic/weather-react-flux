@@ -3,9 +3,12 @@ import { Container } from "flux/utils";
 
 import { CityListStore } from "../stores/citylist-store";
 import { CityWeatherData } from "../contracts/city-weather-data";
-import { DeleteClicked } from "../components/favorite-city-view";
-import { FavoriteCity } from "../components/favorite-city-view";
-import { ActionsCreators } from "../actions/action-creators";
+import {
+    DeleteClicked,
+    FavoriteCity,
+    SelectCity
+} from "../components/favorite-city-view";
+import { ActionsCreators } from "../actions/city-list-actions/action-creators";
 
 import "./city-list-container.css";
 
@@ -26,6 +29,9 @@ class CityListContainerClass extends React.Component<{}, State> {
     protected onDeleteCity: DeleteClicked = city => {
         ActionsCreators.DeleteFavoriteDispatcher(city);
     };
+    protected onSelectCity: SelectCity = city => {
+        ActionsCreators.SendSelectedCityDispatcher(city);
+    };
     protected onDeleteAll = () => {
         ActionsCreators.DeleteAllFavoritesDispatcher();
     }
@@ -41,13 +47,14 @@ class CityListContainerClass extends React.Component<{}, State> {
                                         key={i}
                                         singlecity={city}
                                         clickDelete={this.onDeleteCity}
+                                        selectCity={this.onSelectCity}
                                     />
                                 ))}
                         </div>
                         <div className="delete-all" >
-                        <div className="button" onClick={this.onDeleteAll}>
+                            <div className="button" onClick={this.onDeleteAll}>
                                 <img src="https://www.freeiconspng.com/uploads/trash-can-icon-21.png" />
-                        </div></div>
+                            </div></div>
                     </div>
                 );
             }

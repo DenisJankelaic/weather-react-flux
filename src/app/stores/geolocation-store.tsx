@@ -1,13 +1,16 @@
-import { ReduceStore, ActionHandler } from "simplr-flux";
+import { ReduceStore, ActionHandler, Abstractions } from "simplr-flux";
 import { CityWeatherData } from "../contracts/city-weather-data";
 import {
-    InitGeolocation, SubmitGeolocation
-} from "../actions/actions";
+    InitGeolocation,
+    SubmitGeolocation,
+    SubmitGeolocationFailed
+} from "../actions/geolocation-actions/actions";
 
 interface StoreState {
     cityData: CityWeatherData;
     long: number;
     lat: number;
+    status: Abstractions.ItemStatus;
 }
 
 class GeolocationStoreClass extends ReduceStore<StoreState> {
@@ -15,6 +18,7 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
         super();
         this.registerAction(InitGeolocation, this.onInitGeolocation);
         this.registerAction(SubmitGeolocation, this.onSubmitGeolocation);
+        this.registerAction(SubmitGeolocationFailed, this.onSubmitGeolocationFailed);
     }
     public getInitialState(): StoreState {
         return {
@@ -28,14 +32,16 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
                 weather: ""
             },
             long: 0,
-            lat: 0
+            lat: 0,
+            status: Abstractions.ItemStatus.Init
         };
     }
     private onInitGeolocation: ActionHandler<InitGeolocation, StoreState> = (action, state) => {
         const nextState: StoreState = {
             ...state,
             long: action.Long,
-            lat: action.Lat
+            lat: action.Lat,
+            status: Abstractions.ItemStatus.Loaded
         };
         return nextState;
     }
@@ -51,9 +57,15 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
                 wind: action.Data.wind.speed,
                 weather: action.Data.weather[0].main
             },
+            status: Abstractions.ItemStatus.Loaded
         };
         return nextState;
     }
 
+    private onSubmitGeolocationFailed: ActionHandler<SubmitGeolocationFailed, StoreState> = (action, state) =>
+        ({
+            ...state,
+            status: Abstractions.ItemStatus.Failed
+        })
 }
 export const GeolocationStore = new GeolocationStoreClass();

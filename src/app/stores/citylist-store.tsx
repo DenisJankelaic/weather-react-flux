@@ -4,10 +4,10 @@ import {
     SubmitFavorite,
     DeleteFavorite,
     DeleteAllFavorites
-} from "../actions/actions";
+} from "../actions/city-list-actions/actions";
 
 interface StoreState {
-    cities: CityWeatherData[]
+    cities: CityWeatherData[];
 }
 
 class CityListStoreClass extends ReduceStore<StoreState> {
@@ -47,7 +47,7 @@ class CityListStoreClass extends ReduceStore<StoreState> {
         }
         return {
             ...state,
-            cities: [...nextState.cities]
+            cities: [...nextState.cities],
         };
     }
     private onDeleteAllFavorites: ActionHandler<DeleteAllFavorites, StoreState> = (action, state) => {

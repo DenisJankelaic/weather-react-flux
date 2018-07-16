@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { ActionsCreators } from "../actions/action-creators";
+import { ActionsCreators } from "../actions/main-weather-actions/action-creators";
 import "./input-view.css";
 
 interface State {

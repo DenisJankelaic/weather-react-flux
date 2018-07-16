@@ -46,7 +46,6 @@
             width: 60%;
             display: flex;
             justify-content: space-around;
-            ;
             flex-direction: column;
             font-size: 30px;
             margin: 5px;
@@ -62,7 +61,7 @@
             text-align: center;
             background: linear-gradient(308deg, #ece839, #09a0b4);
             border-radius: 100px;
-            padding: 20px 60px;
+            padding: 20px 50px;
             color: #fff;
             text-decoration: none;
             font-size: 1.45em;
@@ -71,6 +70,7 @@
         &:hover {
             -webkit-animation: hover 1200ms linear 2 alternate;
             animation: hover 1200ms linear 2 alternate;
+            cursor: pointer;
         }
         &:active {
             -webkit-animation: active 1200ms ease 1 alternate;

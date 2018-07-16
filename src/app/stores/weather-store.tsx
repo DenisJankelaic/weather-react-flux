@@ -3,8 +3,12 @@ import {
     SubmitActionFailed,
     SubmitActionPending,
     SubmitActionSucceeded,
-    InitGeolocation
-} from "../actions/actions";
+    InitGeolocation,
+    ChangeSelectionState
+} from "../actions/main-weather-actions/actions";
+import {
+    SubmitSelectedCity
+} from "../actions/city-list-actions/actions";
 import { CityWeatherData } from "../contracts/city-weather-data";
 
 interface StoreState {
@@ -12,6 +16,7 @@ interface StoreState {
     long: number;
     lat: number;
     status: Abstractions.ItemStatus;
+    selected: boolean;
 }
 
 class WeatherStoreClass extends ReduceStore<StoreState> {
@@ -21,6 +26,8 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
         this.registerAction(SubmitActionFailed, this.onSubmitActionFailed);
         this.registerAction(SubmitActionPending, this.onSubmitActionPending);
         this.registerAction(InitGeolocation, this.onInitGeolocation);
+        this.registerAction(SubmitSelectedCity, this.onSubmitSelectedCity);
+        this.registerAction(ChangeSelectionState, this.onChangeSelectionState);
     }
     public getInitialState(): StoreState {
         return {
@@ -35,7 +42,8 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             },
             long: 0,
             lat: 0,
-            status: Abstractions.ItemStatus.Init
+            status: Abstractions.ItemStatus.Init,
+            selected: false
         };
     }
 
@@ -51,7 +59,8 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
                 wind: action.Data.wind.speed,
                 weather: action.Data.weather[0].main
             },
-            status: Abstractions.ItemStatus.Loaded
+            status: Abstractions.ItemStatus.Loaded,
+            selected: false
         };
         return nextState;
     }
@@ -71,6 +80,22 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             ...state,
             long: action.Long,
             lat: action.Lat
+        };
+        return nextState;
+    }
+    private onSubmitSelectedCity: ActionHandler<SubmitSelectedCity, StoreState> = (action, state) => {
+        const nextState: StoreState = {
+            ...state,
+            cityData: action.City,
+            status: Abstractions.ItemStatus.Loaded,
+            selected: true
+        };
+        return nextState;
+    }
+    private onChangeSelectionState: ActionHandler<ChangeSelectionState, StoreState> = (action, state) => {
+        const nextState: StoreState = {
+            ...state,
+            selected: false
         };
         return nextState;
     }
