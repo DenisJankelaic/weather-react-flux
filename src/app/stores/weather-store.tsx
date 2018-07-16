@@ -11,7 +11,6 @@ import {
     SubmitSelectedCity
 } from "../actions/city-list-actions/actions";
 import { CityWeatherData } from "../contracts/city-weather-data";
-import { Store } from "../../../node_modules/@types/flux/utils";
 
 interface StoreState {
     cityData: CityWeatherData;
