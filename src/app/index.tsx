@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { InputView } from "./components/input-view";
+import { InputView } from "./components/input-view/input-view";
 import { WeatherView } from "./components/weather-view";
 import { GeolocationView } from "./components/geolocation-view";
-import { CityListView } from "./components/citylist-view";
+import { CityListView } from "./components/city-view/citylist-view";
 
 import "./styles/index.css";
 

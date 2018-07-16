@@ -19,4 +19,10 @@ export class InitGeolocation {
     }
 }
 export class ChangeSelectionState {
+    constructor(private city: string) { }
+    public get City(): string {
+        return this.city;
+    }
 }
+
+export class ChangeState {}

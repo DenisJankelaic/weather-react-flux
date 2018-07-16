@@ -4,12 +4,14 @@ import {
     SubmitActionPending,
     SubmitActionSucceeded,
     InitGeolocation,
-    ChangeSelectionState
+    ChangeSelectionState,
+    ChangeState
 } from "../actions/main-weather-actions/actions";
 import {
     SubmitSelectedCity
 } from "../actions/city-list-actions/actions";
 import { CityWeatherData } from "../contracts/city-weather-data";
+import { Store } from "../../../node_modules/@types/flux/utils";
 
 interface StoreState {
     cityData: CityWeatherData;
@@ -28,6 +30,7 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
         this.registerAction(InitGeolocation, this.onInitGeolocation);
         this.registerAction(SubmitSelectedCity, this.onSubmitSelectedCity);
         this.registerAction(ChangeSelectionState, this.onChangeSelectionState);
+        this.registerAction(ChangeState, this.onChangeState);
     }
     public getInitialState(): StoreState {
         return {
@@ -93,11 +96,31 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
         return nextState;
     }
     private onChangeSelectionState: ActionHandler<ChangeSelectionState, StoreState> = (action, state) => {
+        if (state.cityData.city === action.City) {
+            const nextState: StoreState = {
+                ...state,
+                cityData: {
+                    ...state.cityData,
+                    city: action.City
+                },
+                selected: false
+            };
+            return nextState;
+        } else {
+            return state;
+        }
+
+    }
+    private onChangeState: ActionHandler<ChangeState, StoreState> = (action, state) => {
         const nextState: StoreState = {
             ...state,
+            cityData: {
+                ...state.cityData,
+            },
             selected: false
         };
         return nextState;
     }
 }
+
 export const WeatherStore = new WeatherStoreClass();

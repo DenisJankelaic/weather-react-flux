@@ -1,14 +1,14 @@
 import * as React from "react";
 import { Container } from "flux/utils";
 
-import { CityListStore } from "../stores/citylist-store";
-import { CityWeatherData } from "../contracts/city-weather-data";
+import { CityListStore } from "../../stores/citylist-store";
+import { CityWeatherData } from "../../contracts/city-weather-data";
 import {
     DeleteClicked,
     FavoriteCity,
     SelectCity
-} from "../components/favorite-city-view";
-import { ActionsCreators } from "../actions/city-list-actions/action-creators";
+} from "../../components/city-view/favorite-city-view";
+import { ActionsCreators } from "../../actions/city-list-actions/action-creators";
 
 import "./city-list-container.css";
 

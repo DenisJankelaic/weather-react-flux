@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Container } from "flux/utils";
 
-import { ActionsCreators } from "../actions/geolocation-actions/action-creators";
-import { GeolocationStore } from "../stores/geolocation-store";
-import { CityWeatherData } from "../contracts/city-weather-data";
+import { ActionsCreators } from "../../actions/geolocation-actions/action-creators";
+import { GeolocationStore } from "../../stores/geolocation-store";
+import { CityWeatherData } from "../../contracts/city-weather-data";
 import { Abstractions } from "simplr-flux";
 
 import "./geolocation-view.css";

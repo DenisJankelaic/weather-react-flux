@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CityWeatherData } from "../contracts/city-weather-data";
+import { CityWeatherData } from "../../contracts/city-weather-data";
 import "./favorite-city-view.css";
 export type DeleteClicked = (city: string) => void;
 export type SelectCity = (city: CityWeatherData) => void;

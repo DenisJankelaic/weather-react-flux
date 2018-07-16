@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Container } from "flux/utils";
 
-import { WeatherStore } from "../stores/weather-store";
-import { CityWeatherData } from "../contracts/city-weather-data";
+import { WeatherStore } from "../../stores/weather-store";
+import { CityWeatherData } from "../../contracts/city-weather-data";
 import { Abstractions } from "simplr-flux";
 
 import "./weather-container.css";
-import { ActionsCreators } from "../actions/main-weather-actions/action-creators";
+import { ActionsCreators } from "../../actions/main-weather-actions/action-creators";
 interface State {
     cityData: CityWeatherData;
     status: Abstractions.ItemStatus;
