@@ -16,7 +16,7 @@ import { CityWeatherData } from "../../contracts/city-weather-data";
 import { DeleteFavorite } from "../city-list-actions/actions";
 
 export namespace ActionsCreators {
-    export async function SubmitDispatcher(city: string): Promise<void> {
+    export async function SubmitAction(city: string): Promise<void> {
         Dispatcher.dispatch(new SubmitActionPending());
         // PROBLEM: My catch block doesn't detect failure in fetching.
         // TODO: Ask better option for `try{}catch{}`.
@@ -33,15 +33,12 @@ export namespace ActionsCreators {
         }
     }
 
-    export function SubmitFavoriteDispatcher(data: CityWeatherData): void {
+    export function SubmitFavoriteAction(data: CityWeatherData): void {
         Dispatcher.dispatch(new SubmitFavorite(data));
     }
 
-    export function DeleteFavoriteDispatcher(data: string): void {
+    export function DeleteFavoriteAction(data: string): void {
         Dispatcher.dispatch(new DeleteFavorite(data));
-        Dispatcher.dispatch(new ChangeSelectionState());
-    }
-    export function SendSelectedCityDispatcher(data: CityWeatherData): void {
-        Dispatcher.dispatch(new SubmitSelectedCity(data));
+        Dispatcher.dispatch(new ChangeSelectionState(data));
     }
 }

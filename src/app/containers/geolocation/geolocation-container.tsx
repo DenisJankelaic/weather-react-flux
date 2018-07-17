@@ -20,7 +20,7 @@ class GeolocationContainerClass extends React.Component<{}, State> {
     }
 
     public componentDidMount(): void {
-        ActionsCreators.InitGeolocationDispatcher();
+        ActionsCreators.InitGeolocationAction();
     }
     public static calculateState(state: State): State {
         return {

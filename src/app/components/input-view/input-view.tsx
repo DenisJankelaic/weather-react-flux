@@ -29,7 +29,7 @@ export class InputView extends React.Component<{}, State> {
         if (city.length === 0) {
             alert("Blank input");
         } else {
-            ActionsCreators.SubmitDispatcher(city);
+            ActionsCreators.SubmitAction(city);
         }
     }
 

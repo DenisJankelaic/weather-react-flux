@@ -10,21 +10,20 @@ import { API_KEY } from "../../api-key";
 
 export namespace ActionsCreators {
 
-    export async function InitGeolocationDispatcher(): Promise<void> {
+    export async function InitGeolocationAction(): Promise<void> {
         await navigator.geolocation.getCurrentPosition(position => {
             // Dispatching initial coordinates.
             Dispatcher.dispatch(new InitGeolocation(position.coords.longitude, position.coords.latitude));
 
             // Requesting weather information on geolocation initially.
-            ActionsCreators.SubmitGeolocationDispatcher(position.coords.longitude, position.coords.latitude);
+            ActionsCreators.SubmitGeolocationAction(position.coords.longitude, position.coords.latitude);
 
             // Setting an interval to refresh weather data in intervals.
-            setInterval(() => ActionsCreators.SubmitGeolocationDispatcher(position.coords.longitude, position.coords.latitude), 10000);
+            setInterval(() => ActionsCreators.SubmitGeolocationAction(position.coords.longitude, position.coords.latitude), 10000);
         });
     }
-    export async function SubmitGeolocationDispatcher(long: number, lat: number): Promise<void> {
+    export async function SubmitGeolocationAction(long: number, lat: number): Promise<void> {
         try {
-            console.log("api called");
             const longitude = long.toFixed(1);
             const latitude = lat.toFixed(1);
             const apicall = await

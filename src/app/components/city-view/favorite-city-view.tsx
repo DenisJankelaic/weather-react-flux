@@ -1,6 +1,9 @@
 import * as React from "react";
+
 import { CityWeatherData } from "../../contracts/city-weather-data";
+
 import "./favorite-city-view.css";
+
 export type DeleteClicked = (city: string) => void;
 export type SelectCity = (city: CityWeatherData) => void;
 
@@ -33,6 +36,6 @@ export class FavoriteCity extends React.Component<Props> {
                     onClick={() => this.props.clickDelete(this.props.singlecity.city)} />
                 </div>
             </ div>
-                );
-            }
-        }
+        );
+    }
+}

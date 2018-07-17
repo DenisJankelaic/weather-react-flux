@@ -5,6 +5,7 @@ import {
     DeleteFavorite,
     DeleteAllFavorites
 } from "../actions/city-list-actions/actions";
+// import { ChangeSelectionState } from "../actions/main-weather-actions/actions";
 
 interface StoreState {
     cities: CityWeatherData[];
@@ -24,11 +25,15 @@ class CityListStoreClass extends ReduceStore<StoreState> {
     }
     private onSubmitFavorite: ActionHandler<SubmitFavorite, StoreState> = (action, state) => {
         const newCity: CityWeatherData = action.Data;
-
         if (state.cities.some(x => (x.city === newCity.city))) {
             alert("This city is already in your favorite!");
             return;
         } else {
+            if (state.cities.length >= 10) {
+                 alert("Your favorite list is full!");
+                //  Dispatcher.dispatch(new ChangeSelectionState(action.Data.city));
+                 return;
+            }
             const nextState: StoreState = {
                 ...state,
                 cities: [...state.cities, newCity]
