@@ -7,7 +7,6 @@ import {
     DeleteAllFavorites
 } from "../actions/city-list-actions/actions";
 import { InitGeolocation } from "../actions/geolocation-actions/actions";
-import { ChangeSelectionState } from "../actions/main-weather-actions/actions";
 
 interface StoreState {
     cities: CityWeatherData[];
@@ -37,12 +36,10 @@ class CityListStoreClass extends ReduceStore<StoreState> {
             return;
         } else if (newCity.lat.toFixed(1) === state.currentlat.toFixed(1) && newCity.long.toFixed(1) === state.currentlong.toFixed(1)) {
             alert("This is your current location. No need to add it to favorites!");
-            // Dispatcher.dispatch(new ChangeSelectionState(action.Data.city));
             return;
         } else {
             if (state.cities.length >= 10) {
                 alert("Your favorite list is full!");
-                //  Dispatcher.dispatch(new ChangeSelectionState(action.Data.city));
                 return;
             }
             const nextState: StoreState = {

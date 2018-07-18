@@ -29,10 +29,10 @@ class WeatherContainerClass extends React.Component<{}, State> {
     }
     protected SubmitFavorite = (): void => {
         ActionsCreators.SubmitFavoriteAction(this.state.cityData);
-        this.setState(state => ({
-            ...state,
-            selected: true
-        }));
+        // this.setState(state => ({
+        //     ...state,
+        //     selected: true
+        // }));
     }
     protected DeleteCity = (): void => {
         ActionsCreators.DeleteFavoriteAction(this.state.cityData.city);

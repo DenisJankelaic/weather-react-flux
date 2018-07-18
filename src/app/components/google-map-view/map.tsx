@@ -1,6 +1,5 @@
 import * as React from "react";
-
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps/types";
 import { withProps, compose } from "recompose";
 
 import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClusterer";
@@ -24,7 +23,7 @@ const MyMapComponent = compose(
     <GoogleMap defaultZoom={7} center={{ lat: 55.1694, lng: 23.8813 }} {...{ styles: demoMapStyle }}>
         <MarkerClusterer averageCenter enableRetinaIcons gridSize={60}>
             {Markers.map(marker =>
-            <Marker key={marker.index} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
+                <Marker key={marker.index} position={{ lat: marker.latitude, lng: marker.longitude }} />)}
         </MarkerClusterer>
     </GoogleMap>
 ));
