@@ -1,4 +1,8 @@
-import { ReduceStore, ActionHandler, Abstractions } from "simplr-flux";
+import {
+    ReduceStore,
+    ActionHandler,
+    Abstractions } from "simplr-flux";
+
 import {
     SubmitActionFailed,
     SubmitActionPending,
@@ -7,9 +11,7 @@ import {
     ChangeSelectionState,
     ChangeState
 } from "../actions/main-weather-actions/actions";
-import {
-    SubmitSelectedCity
-} from "../actions/city-list-actions/actions";
+import { SubmitSelectedCity } from "../actions/city-list-actions/actions";
 import { CityWeatherData } from "../contracts/city-weather-data";
 
 interface StoreState {
@@ -40,7 +42,9 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
                 humidity: 0,
                 wind: 0,
                 description: "",
-                weather: ""
+                weather: "",
+                lat: 0,
+                long: 0
             },
             long: 0,
             lat: 0,
@@ -59,7 +63,9 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
                 humidity: action.Data.main.humidity,
                 temperature: action.Data.main.temp,
                 wind: action.Data.wind.speed,
-                weather: action.Data.weather[0].main
+                weather: action.Data.weather[0].main,
+                lat: action.Data.coord.lat,
+                long: action.Data.coord.lon
             },
             status: Abstractions.ItemStatus.Loaded,
             selected: false
@@ -116,7 +122,7 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             cityData: {
                 ...state.cityData,
             },
-            selected: false
+            selected: !state.selected
         };
         return nextState;
     }

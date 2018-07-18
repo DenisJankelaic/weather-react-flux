@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Merienda+One');
-@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 .weather {
     display: flex;
     flex-direction: column;
     align-content: space-around;
     justify-content: space-around;
     margin-top: 15px;
-    font-family: 'Merienda One', cursive; // background-color: rgba(white, .7);
+    font-family: 'Quicksand', sans-serif;
     z-index: 10;
     padding: 30px;
     color: white;
@@ -95,7 +94,7 @@
         }
         .text {
             text-align: center;
-            font-family: 'Berkshire Swash', cursive;
+            font-family: 'Quicksand', sans-serif;
             font-size: 24px;
             color: white;
         }

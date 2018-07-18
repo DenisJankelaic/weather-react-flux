@@ -1,0 +1,18 @@
+.map-window {
+    position: relative;
+    .button {
+        position: absolute;
+        top: 10;
+        left: 10;
+        img{
+            width: 48px;
+            opacity: 0.3;
+            &:hover{
+                opacity: 1;
+            }
+        }
+
+    }
+    .map {
+    }
+}

@@ -6,4 +6,6 @@ export interface CityWeatherData {
     wind: number;
     description: string;
     weather: string;
+    lat: number;
+    long: number;
 }

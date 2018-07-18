@@ -1,5 +1,5 @@
 import * as React from "react";
-// import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Container } from "flux/utils";
 
 import { CityListStore } from "../../stores/citylist-store";
@@ -12,7 +12,7 @@ import {
 import { ActionsCreators } from "../../actions/city-list-actions/action-creators";
 
 import "./city-list-container.css";
-import { SimpleMap } from "../../components/google-map-view/map-view";
+
 interface State {
     cities: CityWeatherData[];
 }
@@ -36,9 +36,6 @@ class CityListContainerClass extends React.Component<{}, State> {
     protected onDeleteAll = () => {
         ActionsCreators.DeleteAllFavoritesAction();
     }
-    protected onShowMap = () => {
-       window.open("../../map");
-    }
     public render(): JSX.Element {
         switch (this.state.cities.length !== 0) {
             case true: {
@@ -59,9 +56,13 @@ class CityListContainerClass extends React.Component<{}, State> {
                             <div className="button" onClick={this.onDeleteAll}>
                                 <img src="https://www.freeiconspng.com/uploads/trash-can-icon-21.png" />
                             </div>
-                            <div className="button" onClick={this.onShowMap}>
-                            <img src="https://s3.amazonaws.com/iconbros/icons/icon_pngs/000/000/355/original/map.png?1510933432" /></div>
-                    </div></div>
+                            <div className="button" >
+                                <NavLink to="/map">
+                                <img src="https://s3.amazonaws.com/iconbros/icons/icon_pngs/000/000/355/original/map.png?1510933432" />
+                                </NavLink>
+                            </div>
+                        </div>
+                    </div>
                 );
             }
             case false: {

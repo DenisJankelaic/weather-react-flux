@@ -7,8 +7,14 @@
         }
     }
     .main {
+        @media only screen and (max-width: 761px) {
+            flex-flow: column;
+            display: flex;
+            align-items: center;
+        }
         display: flex;
         flex-flow: row-reverse;
+        height: 100%;
         .input-city {
             width: 100%;
             display: flex;
@@ -24,9 +30,11 @@
             .weather-data {}
         }
         .city-list-view {
+            display: none;
             max-width: 250px;
             display: flex;
             margin-top: 50px;
+            
         }
     }
 }

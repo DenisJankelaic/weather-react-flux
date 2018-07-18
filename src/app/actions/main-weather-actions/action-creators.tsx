@@ -7,7 +7,7 @@ import {
     ChangeSelectionState
 } from "./actions";
 import {
-    SubmitFavorite, SubmitSelectedCity
+    SubmitFavorite
 } from "../city-list-actions/actions";
 
 import { RootObject } from "../../contracts/weather";
@@ -39,6 +39,9 @@ export namespace ActionsCreators {
 
     export function DeleteFavoriteAction(data: string): void {
         Dispatcher.dispatch(new DeleteFavorite(data));
+        Dispatcher.dispatch(new ChangeSelectionState(data));
+    }
+    export function ChangeStateAction(data: string): void {
         Dispatcher.dispatch(new ChangeSelectionState(data));
     }
 }

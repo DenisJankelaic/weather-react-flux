@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { ActionsCreators } from "../../actions/main-weather-actions/action-creators";
+
 import "./input-view.css";
 
 interface State {
@@ -26,7 +27,7 @@ export class InputView extends React.Component<{}, State> {
     };
 
     protected async SubmitCity(city: string): Promise<void> {
-        if (city.length === 0) {
+        if (city.trim().length === 0) {
             alert("Blank input");
         } else {
             ActionsCreators.SubmitAction(city);

@@ -1,14 +1,18 @@
-import { ReduceStore, ActionHandler } from "simplr-flux";
+import { ReduceStore, ActionHandler, Dispatcher } from "simplr-flux";
+
 import { CityWeatherData } from "../contracts/city-weather-data";
 import {
     SubmitFavorite,
     DeleteFavorite,
     DeleteAllFavorites
 } from "../actions/city-list-actions/actions";
-// import { ChangeSelectionState } from "../actions/main-weather-actions/actions";
+import { InitGeolocation } from "../actions/geolocation-actions/actions";
+import { ChangeSelectionState } from "../actions/main-weather-actions/actions";
 
 interface StoreState {
     cities: CityWeatherData[];
+    currentlat: number;
+    currentlong: number;
 }
 
 class CityListStoreClass extends ReduceStore<StoreState> {
@@ -17,10 +21,13 @@ class CityListStoreClass extends ReduceStore<StoreState> {
         this.registerAction(SubmitFavorite, this.onSubmitFavorite);
         this.registerAction(DeleteFavorite, this.onDeleteFavorite);
         this.registerAction(DeleteAllFavorites, this.onDeleteAllFavorites);
+        this.registerAction(InitGeolocation, this.onInitGeolocation);
     }
     public getInitialState(): StoreState {
         return {
-            cities: []
+            cities: [],
+            currentlat: 0,
+            currentlong: 0
         };
     }
     private onSubmitFavorite: ActionHandler<SubmitFavorite, StoreState> = (action, state) => {
@@ -28,11 +35,15 @@ class CityListStoreClass extends ReduceStore<StoreState> {
         if (state.cities.some(x => (x.city === newCity.city))) {
             alert("This city is already in your favorite!");
             return;
+        } else if (newCity.lat.toFixed(1) === state.currentlat.toFixed(1) && newCity.long.toFixed(1) === state.currentlong.toFixed(1)) {
+            alert("This is your current location. No need to add it to favorites!");
+            // Dispatcher.dispatch(new ChangeSelectionState(action.Data.city));
+            return;
         } else {
             if (state.cities.length >= 10) {
-                 alert("Your favorite list is full!");
+                alert("Your favorite list is full!");
                 //  Dispatcher.dispatch(new ChangeSelectionState(action.Data.city));
-                 return;
+                return;
             }
             const nextState: StoreState = {
                 ...state,
@@ -55,16 +66,25 @@ class CityListStoreClass extends ReduceStore<StoreState> {
             cities: [...nextState.cities],
         };
     }
-    private onDeleteAllFavorites: ActionHandler<DeleteAllFavorites, StoreState> = (action, state) => {
-        const nextState: StoreState = {
-            ...state
-        };
-        nextState.cities.splice(0, nextState.cities.length);
-
-        return {
+    private onInitGeolocation: ActionHandler<InitGeolocation, StoreState> = (action, state) =>
+        ({
             ...state,
-            cities: [...nextState.cities]
-        };
+            currentlat: action.Lat,
+            currentlong: action.Long
+        })
+    private onDeleteAllFavorites: ActionHandler<DeleteAllFavorites, StoreState> = (action, state) => {
+        if (confirm("Are you sure you want to clear favorite list?")) {
+            const nextState: StoreState = {
+                ...state
+            };
+            nextState.cities.splice(0, nextState.cities.length);
+            return {
+                ...state,
+                cities: [...nextState.cities]
+            };
+        } else {
+            return;
+        }
     }
 }
 export const CityListStore = new CityListStoreClass();
