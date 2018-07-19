@@ -7,7 +7,8 @@ import {
     SubmitActionFailed,
     SubmitActionPending,
     SubmitActionSucceeded,
-    InitGeolocation
+    InitGeolocation,
+    GetCountryName
 } from "../actions/main-weather-actions/actions";
 import { SubmitSelectedCity } from "../actions/city-list-actions/actions";
 import { CityWeatherData } from "../contracts/city-weather-data";
@@ -18,6 +19,7 @@ interface StoreState {
     lat: number;
     status: Abstractions.ItemStatus;
     selected: boolean;
+    cityCountryName: string;
 }
 
 class WeatherStoreClass extends ReduceStore<StoreState> {
@@ -28,6 +30,7 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
         this.registerAction(SubmitActionPending, this.onSubmitActionPending);
         this.registerAction(InitGeolocation, this.onInitGeolocation);
         this.registerAction(SubmitSelectedCity, this.onSubmitSelectedCity);
+        this.registerAction(GetCountryName, this.onGetCountryName);
     }
     public getInitialState(): StoreState {
         return {
@@ -45,7 +48,8 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             long: 0,
             lat: 0,
             status: Abstractions.ItemStatus.Init,
-            selected: false
+            selected: false,
+            cityCountryName: ""
         };
     }
 
@@ -93,6 +97,13 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             cityData: action.City,
             status: Abstractions.ItemStatus.Loaded,
             selected: true
+        };
+        return nextState;
+    }
+    private onGetCountryName: ActionHandler<GetCountryName, StoreState> = (action, state) => {
+        const nextState: StoreState = {
+            ...state,
+            cityCountryName: action.Country.name
         };
         return nextState;
     }

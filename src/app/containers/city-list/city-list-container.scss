@@ -5,15 +5,17 @@
         text-align: center;
         .button {
             box-shadow: 0px 1px 0px 0px #1c1b18;
-            background: linear-gradient(to bottom, #c56dee 5%, #ccc2a6 100%);
-            border-radius: 15px;
+            border-radius: 5px;
             border: 2px solid #333029;
             display: inline-block;
             cursor: pointer;
             color: #505739;
             padding: 5px 5px;
             text-decoration: none;
+            background: rgba($color: hsl(0, 0%, 99%), $alpha: 0.8);
             text-shadow: 0px 1px 0px #ffffff;
+            margin: 5px;
+            box-shadow: #1c1b18;
             &:active {
                 position: relative;
                 top: 1px;
