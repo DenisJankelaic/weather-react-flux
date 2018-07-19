@@ -15,6 +15,7 @@ interface State {
     selected: boolean;
     cityList: CityWeatherData[];
     cityCountry: string;
+    imageUrl: string;
 }
 
 class WeatherContainerClass extends React.Component<{}, State> {
@@ -23,6 +24,7 @@ class WeatherContainerClass extends React.Component<{}, State> {
     }
     public static calculateState(state: State): State {
         return {
+            ...state,
             cityData: WeatherStore.getState().cityData,
             status: WeatherStore.getState().status,
             long: WeatherStore.getState().long,
@@ -54,9 +56,13 @@ class WeatherContainerClass extends React.Component<{}, State> {
     protected GetCountryName = (): void => {
         ActionsCreators.GetCountryNameAction(this.state.cityData.country);
     }
-
+    protected GetCityImage = (cityName: string): void => {
+        ActionsCreators.GetCityImageAction(cityName);
+    }
     public render(): JSX.Element {
         this.GetCountryName();
+        this.GetCityImage(this.state.cityData.city);
+        console.log(this.state.imageUrl);
         const { cityData, status } = this.state;
         switch (status) {
             case Abstractions.ItemStatus.Loaded: {

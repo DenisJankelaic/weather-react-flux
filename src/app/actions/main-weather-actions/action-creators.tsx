@@ -1,11 +1,12 @@
 import { Dispatcher } from "simplr-flux";
-
+import * as GoogleImages from "google-images";
 import {
     SubmitActionFailed,
     SubmitActionSucceeded,
     SubmitActionPending,
     GetCountryName,
-    GetCountryNameActionFailed
+    GetCountryNameActionFailed,
+    GetCityImage
 } from "./actions";
 import {
     SubmitFavorite,
@@ -34,6 +35,15 @@ export namespace ActionsCreators {
         }
     }
 
+    export async function GetCityImageAction(city: string): Promise<void> {
+
+        const GS_API_KEY = "AIzaSyC7MY6KW3_xg_lg4h1p19RW5UOYg1GoudY";
+        const client = await new GoogleImages("008259920666813560354:lv2qdbvh_fq", GS_API_KEY);
+        client.search(city).then(image => {
+            Dispatcher.dispatch(new GetCityImage(image[0].url));
+        });
+    }
+
     export function SubmitFavoriteAction(data: CityWeatherData): void {
         Dispatcher.dispatch(new SubmitFavorite(data));
     }
@@ -42,7 +52,7 @@ export namespace ActionsCreators {
         Dispatcher.dispatch(new DeleteFavorite(data));
     }
 
-    export async function GetCountryNameAction(countryCode: string): Promise<void>  {
+    export async function GetCountryNameAction(countryCode: string): Promise<void> {
         try {
             const cityapicall = await fetch(`https://restcountries.eu/rest/v2/alpha/${countryCode}`);
             if (cityapicall.status === 200) {
