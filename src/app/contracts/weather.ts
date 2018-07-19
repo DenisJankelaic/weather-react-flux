@@ -36,7 +36,7 @@ export interface Sys {
     sunset: number;
 }
 
-export interface RootObject {
+export interface ApiWeatherData {
     coord: Coord;
     weather: Weather[];
     base: string;

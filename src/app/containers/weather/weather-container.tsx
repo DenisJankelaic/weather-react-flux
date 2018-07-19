@@ -7,16 +7,18 @@ import { CityWeatherData } from "../../contracts/city-weather-data";
 import { ActionsCreators } from "../../actions/main-weather-actions/action-creators";
 
 import "./weather-container.css";
+import { CityListStore } from "../../stores/citylist-store";
 interface State {
     cityData: CityWeatherData;
     status: Abstractions.ItemStatus;
     long: number;
     lat: number;
     selected: boolean;
+    cityList: CityWeatherData[];
 }
 class WeatherContainerClass extends React.Component<{}, State> {
     public static getStores(): Container.StoresList {
-        return [WeatherStore];
+        return [WeatherStore, CityListStore];
     }
     public static calculateState(state: State): State {
         return {
@@ -24,15 +26,21 @@ class WeatherContainerClass extends React.Component<{}, State> {
             status: WeatherStore.getState().status,
             long: WeatherStore.getState().long,
             lat: WeatherStore.getState().lat,
-            selected: WeatherStore.getState().selected
+            selected: WeatherStore.getState().selected,
+            cityList: CityListStore.getState().cities
         };
     }
     protected SubmitFavorite = (): void => {
         ActionsCreators.SubmitFavoriteAction(this.state.cityData);
-        // this.setState(state => ({
-        //     ...state,
-        //     selected: true
-        // }));
+        this.componentDidUpdate();
+    }
+    public componentDidUpdate(): void {
+        if (this.state.cityList.some(x => (x.city === this.state.cityData.city))) {
+            this.setState(state => ({
+                ...state,
+                selected: true
+            }));
+        }
     }
     protected DeleteCity = (): void => {
         ActionsCreators.DeleteFavoriteAction(this.state.cityData.city);

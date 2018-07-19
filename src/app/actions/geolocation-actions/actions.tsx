@@ -1,10 +1,10 @@
-import { RootObject } from "../../contracts/weather";
+import { ApiWeatherData } from "../../contracts/weather";
 
 export class SubmitGeolocation {
-    constructor(private data: RootObject) {
+    constructor(private currentLocationData: ApiWeatherData) {
     }
-    public get Data(): RootObject {
-        return this.data;
+    public get Data(): ApiWeatherData {
+        return this.currentLocationData;
     }
 }
 

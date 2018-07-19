@@ -1,12 +1,13 @@
-import { RootObject } from "../../contracts/weather";
+import { ApiWeatherData } from "../../contracts/weather";
 
 export class SubmitActionFailed { }
 export class SubmitActionPending { }
+
 export class SubmitActionSucceeded {
-    constructor(private data: RootObject) {
+    constructor(private cityWeatherData: ApiWeatherData) {
     }
-    public get Data(): RootObject {
-        return this.data;
+    public get Data(): ApiWeatherData {
+        return this.cityWeatherData;
     }
 }
 export class InitGeolocation {
@@ -18,11 +19,3 @@ export class InitGeolocation {
         return this.lat;
     }
 }
-export class ChangeSelectionState {
-    constructor(private city: string) { }
-    public get City(): string {
-        return this.city;
-    }
-}
-
-export class ChangeState {}

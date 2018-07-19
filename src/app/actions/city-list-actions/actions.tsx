@@ -1,25 +1,26 @@
 import { CityWeatherData } from "../../contracts/city-weather-data";
 
 export class SubmitFavorite {
-    constructor(private data: CityWeatherData) {
+    constructor(private CityData: CityWeatherData) {
     }
     public get Data(): CityWeatherData {
-        return this.data;
+        return this.CityData;
     }
 }
 export class DeleteFavorite {
-    constructor(private city: string) {
+    constructor(private cityName: string) {
     }
     public get City(): string {
-        return this.city;
+        return this.cityName;
     }
 }
-export class DeleteAllFavorites { }
 
 export class SubmitSelectedCity {
-    constructor(private city: CityWeatherData) {
+    constructor(private cityWeatherData: CityWeatherData) {
     }
     public get City(): CityWeatherData {
-        return this.city;
+        return this.cityWeatherData;
     }
 }
+
+export class DeleteAllFavorites { }

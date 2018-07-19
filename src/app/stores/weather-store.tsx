@@ -7,9 +7,7 @@ import {
     SubmitActionFailed,
     SubmitActionPending,
     SubmitActionSucceeded,
-    InitGeolocation,
-    ChangeSelectionState,
-    ChangeState
+    InitGeolocation
 } from "../actions/main-weather-actions/actions";
 import { SubmitSelectedCity } from "../actions/city-list-actions/actions";
 import { CityWeatherData } from "../contracts/city-weather-data";
@@ -30,8 +28,6 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
         this.registerAction(SubmitActionPending, this.onSubmitActionPending);
         this.registerAction(InitGeolocation, this.onInitGeolocation);
         this.registerAction(SubmitSelectedCity, this.onSubmitSelectedCity);
-        this.registerAction(ChangeSelectionState, this.onChangeSelectionState);
-        this.registerAction(ChangeState, this.onChangeState);
     }
     public getInitialState(): StoreState {
         return {
@@ -97,32 +93,6 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             cityData: action.City,
             status: Abstractions.ItemStatus.Loaded,
             selected: true
-        };
-        return nextState;
-    }
-    private onChangeSelectionState: ActionHandler<ChangeSelectionState, StoreState> = (action, state) => {
-        if (state.cityData.city === action.City) {
-            const nextState: StoreState = {
-                ...state,
-                cityData: {
-                    ...state.cityData,
-                    city: action.City
-                },
-                selected: false
-            };
-            return nextState;
-        } else {
-            return state;
-        }
-
-    }
-    private onChangeState: ActionHandler<ChangeState, StoreState> = (action, state) => {
-        const nextState: StoreState = {
-            ...state,
-            cityData: {
-                ...state.cityData,
-            },
-            selected: !state.selected
         };
         return nextState;
     }

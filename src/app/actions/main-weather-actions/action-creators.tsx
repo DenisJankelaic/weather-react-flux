@@ -3,17 +3,15 @@ import { Dispatcher } from "simplr-flux";
 import {
     SubmitActionFailed,
     SubmitActionSucceeded,
-    SubmitActionPending,
-    ChangeSelectionState
+    SubmitActionPending
 } from "./actions";
 import {
-    SubmitFavorite
+    SubmitFavorite,
+    DeleteFavorite
 } from "../city-list-actions/actions";
-
-import { RootObject } from "../../contracts/weather";
+import { ApiWeatherData } from "../../contracts/weather";
 import { API_KEY } from "../../api-key";
 import { CityWeatherData } from "../../contracts/city-weather-data";
-import { DeleteFavorite } from "../city-list-actions/actions";
 
 export namespace ActionsCreators {
     export async function SubmitAction(city: string): Promise<void> {
@@ -23,7 +21,7 @@ export namespace ActionsCreators {
         try {
             const apicall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
             if (apicall.status === 200) {
-                const data: RootObject = await apicall.json();
+                const data: ApiWeatherData = await apicall.json();
                 Dispatcher.dispatch(new SubmitActionSucceeded(data));
             } else {
                 Dispatcher.dispatch(new SubmitActionFailed());
@@ -39,9 +37,5 @@ export namespace ActionsCreators {
 
     export function DeleteFavoriteAction(data: string): void {
         Dispatcher.dispatch(new DeleteFavorite(data));
-        Dispatcher.dispatch(new ChangeSelectionState(data));
-    }
-    export function ChangeStateAction(data: string): void {
-        Dispatcher.dispatch(new ChangeSelectionState(data));
     }
 }
