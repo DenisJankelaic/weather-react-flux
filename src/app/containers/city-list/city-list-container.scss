@@ -1,6 +1,7 @@
 .city-list {
     display: flex;
     flex-direction: column;
+    z-index: 3;
     .delete-all {
         text-align: center;
         .button {

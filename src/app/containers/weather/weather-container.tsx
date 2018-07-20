@@ -7,6 +7,7 @@ import { ActionsCreators } from "../../actions/main-weather-actions/action-creat
 
 import "./weather-container.css";
 import { CityListStore } from "../../stores/citylist-store";
+import { url } from "inspector";
 interface State {
     cityData: CityWeatherData;
     status: Abstractions.ItemStatus;
@@ -31,13 +32,17 @@ class WeatherContainerClass extends React.Component<{}, State> {
             lat: WeatherStore.getState().lat,
             selected: WeatherStore.getState().selected,
             cityList: CityListStore.getState().cities,
-            cityCountry: WeatherStore.getState().cityCountryName
+            cityCountry: WeatherStore.getState().cityCountryName,
+            imageUrl: WeatherStore.getState().cityImage
         };
     }
     protected SubmitFavorite = (): void => {
         ActionsCreators.SubmitFavoriteAction(this.state.cityData);
         this.componentDidUpdate();
     }
+    // public componentDidMount(): void {
+    //     this.GetCountryName();
+    // }
     public componentDidUpdate(): void {
         if (this.state.cityList.some(x => (x.city === this.state.cityData.city))) {
             this.setState(state => ({
@@ -56,51 +61,51 @@ class WeatherContainerClass extends React.Component<{}, State> {
     protected GetCountryName = (): void => {
         ActionsCreators.GetCountryNameAction(this.state.cityData.country);
     }
-    protected GetCityImage = (cityName: string): void => {
-        ActionsCreators.GetCityImageAction(cityName);
-    }
+    // style={{backgroundImage: `url(${this.state.imageUrl})`}}
     public render(): JSX.Element {
         this.GetCountryName();
-        this.GetCityImage(this.state.cityData.city);
-        console.log(this.state.imageUrl);
         const { cityData, status } = this.state;
         switch (status) {
             case Abstractions.ItemStatus.Loaded: {
                 return (
-                    <div className="weather">
-                        <div className="first-row">
-                            <div className="city">
-                                {cityData.city.toLocaleUpperCase()} </div>
-                            <div className="desc">
-                                {cityData.description.toLocaleUpperCase()}</div></div>
-                        <div className="second-row">
-                            <div className="left-side">
-                                <div className="temp">
-                                    {cityData.temperature}°
-                                    </div>
+                    <div className="weather" >
+                        <div className="container">
+                            <div className="first-row">
+                                <div className="city">
+                                    {cityData.city.toLocaleUpperCase()} </div>
                                 <div className="desc">
-                                    {cityData.weather.toLocaleUpperCase()}</div>
-                                <div className="bottom-data">
-                                    <div className="humidity">
-                                        <div> HUMIDITY </div>
-                                        <div>{cityData.humidity}%</div>
+                                    {cityData.description.toLocaleUpperCase()}</div></div>
+                            <div className="second-row">
+                                <div className="left-side">
+                                    <div className="temp">
+                                        {cityData.temperature}°
                                     </div>
-                                    <div className="wind">
-                                        <div>WIND</div>
-                                        <div> {cityData.wind}M/S </div></div>
+                                    <div className="desc">
+                                        {cityData.weather.toLocaleUpperCase()}</div>
+                                    <div className="bottom-data">
+                                        <div className="humidity">
+                                            <div> HUMIDITY </div>
+                                            <div>{cityData.humidity}%</div>
+                                        </div>
+                                        <div className="wind">
+                                            <div>WIND</div>
+                                            <div> {cityData.wind}M/S </div></div>
+                                    </div>
+                                </div>
+                                <div className="right-side">
+                                    <div className="country">
+                                        {this.state.cityCountry.toLocaleUpperCase()}</div>
                                 </div>
                             </div>
-                            <div className="right-side">
-                                <div className="country">
-                                    {this.state.cityCountry.toLocaleUpperCase()}</div>
+                            <div className="third-row">
+                                {this.state.selected ?
+                                    <div className="button" onClick={this.DeleteCity}>Delete from favorites</div> :
+                                    <div className="button" onClick={this.SubmitFavorite}>Add to favorites</div>}
                             </div>
-                        </div>
-                        <div className="third-row">
-                            {this.state.selected ?
-                                <div className="button" onClick={this.DeleteCity}>Delete from favorites</div> :
-                                <div className="button" onClick={this.SubmitFavorite}>Add to favorites</div>}
-                        </div>
-                    </div >
+                        </div >
+                        <div className="pic">
+                            <img src={this.state.imageUrl} /> </div>
+                    </div>
                 );
             }
             case Abstractions.ItemStatus.Failed: {
