@@ -7,16 +7,13 @@ import { ActionsCreators } from "../../actions/main-weather-actions/action-creat
 
 import "./weather-container.css";
 import { CityListStore } from "../../stores/citylist-store";
-import { url } from "inspector";
 interface State {
     cityData: CityWeatherData;
     status: Abstractions.ItemStatus;
-    long: number;
-    lat: number;
     selected: boolean;
     cityList: CityWeatherData[];
     cityCountry: string;
-    imageUrl: string;
+    // imageUrl: string;
 }
 
 class WeatherContainerClass extends React.Component<{}, State> {
@@ -28,21 +25,16 @@ class WeatherContainerClass extends React.Component<{}, State> {
             ...state,
             cityData: WeatherStore.getState().cityData,
             status: WeatherStore.getState().status,
-            long: WeatherStore.getState().long,
-            lat: WeatherStore.getState().lat,
             selected: WeatherStore.getState().selected,
             cityList: CityListStore.getState().cities,
             cityCountry: WeatherStore.getState().cityCountryName,
-            imageUrl: WeatherStore.getState().cityImage
+            // imageUrl: WeatherStore.getState().cityImage
         };
     }
     protected SubmitFavorite = (): void => {
         ActionsCreators.SubmitFavoriteAction(this.state.cityData);
         this.componentDidUpdate();
     }
-    // public componentDidMount(): void {
-    //     this.GetCountryName();
-    // }
     public componentDidUpdate(): void {
         if (this.state.cityList.some(x => (x.city === this.state.cityData.city))) {
             this.setState(state => ({
@@ -61,7 +53,6 @@ class WeatherContainerClass extends React.Component<{}, State> {
     protected GetCountryName = (): void => {
         ActionsCreators.GetCountryNameAction(this.state.cityData.country);
     }
-    // style={{backgroundImage: `url(${this.state.imageUrl})`}}
     public render(): JSX.Element {
         this.GetCountryName();
         const { cityData, status } = this.state;
@@ -104,7 +95,7 @@ class WeatherContainerClass extends React.Component<{}, State> {
                             </div>
                         </div >
                         <div className="pic">
-                            <img src={this.state.imageUrl} /> </div>
+                            <img src={cityData.url} /> </div>
                     </div>
                 );
             }

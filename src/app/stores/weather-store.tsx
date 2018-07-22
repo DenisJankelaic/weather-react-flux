@@ -1,4 +1,3 @@
-import * as GoogleImages from "google-images";
 import {
     ReduceStore,
     ActionHandler,
@@ -8,17 +7,15 @@ import {
     SubmitActionFailed,
     SubmitActionPending,
     SubmitActionSucceeded,
-    InitGeolocation,
     GetCountryName,
-    GetCityImage
+    GetCityImage,
+    ChangeMainWeatherButton
 } from "../actions/main-weather-actions/actions";
 import { SubmitSelectedCity } from "../actions/city-list-actions/actions";
 import { CityWeatherData } from "../contracts/city-weather-data";
 
 interface StoreState {
     cityData: CityWeatherData;
-    long: number;
-    lat: number;
     status: Abstractions.ItemStatus;
     selected: boolean;
     cityCountryName: string;
@@ -31,10 +28,10 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
         this.registerAction(SubmitActionSucceeded, this.onSubmitActionSucceeded);
         this.registerAction(SubmitActionFailed, this.onSubmitActionFailed);
         this.registerAction(SubmitActionPending, this.onSubmitActionPending);
-        this.registerAction(InitGeolocation, this.onInitGeolocation);
         this.registerAction(SubmitSelectedCity, this.onSubmitSelectedCity);
         this.registerAction(GetCountryName, this.onGetCountryName);
         this.registerAction(GetCityImage, this.onGetCityImage);
+        this.registerAction(ChangeMainWeatherButton, this.onChangeButton);
     }
     public getInitialState(): StoreState {
         return {
@@ -47,10 +44,9 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
                 description: "",
                 weather: "",
                 lat: 0,
-                long: 0
+                long: 0,
+                url: ""
             },
-            long: 0,
-            lat: 0,
             status: Abstractions.ItemStatus.Init,
             selected: false,
             cityCountryName: "",
@@ -62,6 +58,7 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
         const nextState: StoreState = {
             ...state,
             cityData: {
+                ...this.getState().cityData,
                 city: action.Data.name,
                 country: action.Data.sys.country,
                 description: action.Data.weather[0].description,
@@ -88,14 +85,6 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             ...state,
             status: Abstractions.ItemStatus.Pending
         })
-    private onInitGeolocation: ActionHandler<InitGeolocation, StoreState> = (action, state) => {
-        const nextState: StoreState = {
-            ...state,
-            long: action.Long,
-            lat: action.Lat
-        };
-        return nextState;
-    }
     private onSubmitSelectedCity: ActionHandler<SubmitSelectedCity, StoreState> = (action, state) => {
         const nextState: StoreState = {
             ...state,
@@ -115,7 +104,17 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
     private onGetCityImage: ActionHandler<GetCityImage, StoreState> = (action, state) => {
         const nextState: StoreState = {
             ...state,
-            cityImage: action.CityImageUrl
+            cityData: {
+                ...this.getState().cityData,
+                url: action.CityImageUrl
+            }
+        };
+        return nextState;
+    }
+    private onChangeButton: ActionHandler<ChangeMainWeatherButton, StoreState> = (action, state) => {
+        const nextState: StoreState = {
+            ...state,
+            selected: false
         };
         return nextState;
     }

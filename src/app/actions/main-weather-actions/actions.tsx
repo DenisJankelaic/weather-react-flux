@@ -34,3 +34,5 @@ export class GetCityImage {
         return this.cityImageUrl;
     }
 }
+export class ChangeMainWeatherButton {
+}

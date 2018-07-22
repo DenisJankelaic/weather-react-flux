@@ -8,4 +8,5 @@ export interface CityWeatherData {
     weather: string;
     lat: number;
     long: number;
+    url: string;
 }

@@ -34,16 +34,14 @@ export namespace ActionsCreators {
             Dispatcher.dispatch(new SubmitActionFailed());
         }
     }
-
-    // tslint:disable-next-line:max-line-length
-    //https://www.googleapis.com/customsearch/v1?cx=008259920666813560354:lv2qdbvh_fq&key=AIzaSyCV2pEzO3Hd6ktTnseWuZmPqewcyLqRli8&searchType=image&q=paris-weather
     export async function GetCityImageAction(city: string): Promise<void> {
         const GS_API_KEY = "AIzaSyCV2pEzO3Hd6ktTnseWuZmPqewcyLqRli8";
         const E_ID = "008259920666813560354:lv2qdbvh_fq";
         const searchapicall =
             // tslint:disable-next-line:max-line-length
-            await fetch(`https://www.googleapis.com/customsearch/v1?cx=${E_ID}&key=${GS_API_KEY}&imgSize=xxLarge&imgType=photo&searchType=image&q=${city}%20City`);
+            await fetch(`https://www.googleapis.com/customsearch/v1?cx=${E_ID}&key=${GS_API_KEY}&imgSize=xxLarge&imgType=photo&searchType=image&q=${city}`);
         const searchdata: ApiSearchData = await searchapicall.json();
+
         Dispatcher.dispatch(new GetCityImage(searchdata.items[0].link));
     }
     export function SubmitFavoriteAction(data: CityWeatherData): void {
