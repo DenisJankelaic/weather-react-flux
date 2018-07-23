@@ -4,9 +4,9 @@ import * as ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { WeatherWindowView } from "./components/weather-window-view";
-import { WorldMapView } from "./components/google-map-view/map";
 
 import "./styles/index.css";
+import { MapContainer } from "./containers/map/map-container";
 
 class App extends React.Component {
 
@@ -17,8 +17,7 @@ class App extends React.Component {
           <Route exact path="/" component={WeatherWindowView} />
           <Route exact
           path="/map"
-          render={props => <WorldMapView {...props} markers={true}/>}
-          // component={WorldMapView}
+          component={MapContainer}
           />
           </Switch>
       </BrowserRouter>

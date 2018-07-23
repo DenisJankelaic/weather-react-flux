@@ -5,27 +5,29 @@ import { Markers } from "./markerList";
 import { NavLink } from "react-router-dom";
 import { GeolocationView } from "../geolocation-view";
 import { CityWeatherData } from "../../contracts/city-weather-data";
+import { mapProps } from "recompose";
 
 // const GOOGLE_MAPS_API_KEY = "AIzaSyBZpfgmWpYR5pxjBeX7OOKsHIyQCH_uMic";
-
-const MapWithAMarker = withScriptjs(withGoogleMap(props =>
+//su propsais perduot markerius
+const MapWithAMarker = withScriptjs(withGoogleMap((props: Props) =>
     <GoogleMap
         defaultZoom={8}
         defaultCenter={{ lat: 54.8985, lng: 23.9036 }}
     >
-        {Markers.map(marker => <Marker key={marker.index} position={{ lat: marker.latitude, lng: marker.longitude }}
-            icon={{
-                path: google.maps.SymbolPath.CIRCLE,
-                fillOpacity: 1,
-                fillColor: "#5DFFFF",
-                strokeOpacity: 1,
-                strokeWeight: 3,
-                strokeColor: "#1B4141",
-                scale: 15,
-            }}
-            label={{ text: "25" }}
-        />
-        )}
+        {props.markers != null ?
+            props.markers.map(marker => <Marker key={marker.index} position={{ lat: marker.lat, lng: marker.long }}
+                icon={{
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillOpacity: 1,
+                    fillColor: "#5DFFFF",
+                    strokeOpacity: 1,
+                    strokeWeight: 3,
+                    strokeColor: "#1B4141",
+                    scale: 15,
+                }}
+                label={{ text: "25" }}
+            />
+            ) : null}
     </GoogleMap >
 ));
 
@@ -34,10 +36,11 @@ interface Props {
 }
 
 export class WorldMapView extends React.Component<Props> {
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
     }
     public render(): JSX.Element {
+        console.log(this.props.markers);
         return (
             <div className="map-view">
                 <div className="geolocation"><GeolocationView /> </div>
@@ -49,6 +52,7 @@ export class WorldMapView extends React.Component<Props> {
                         loadingElement={<div style={{ height: "100%" }} />}
                         containerElement={<div style={{ height: "100%" }} />}
                         mapElement={<div style={{ height: "100%" }} />}
+                    // markers= {this.props.markers}
                     >
                         {this.props.markers}
                     </MapWithAMarker>
