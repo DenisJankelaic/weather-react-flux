@@ -1,19 +1,20 @@
 import * as React from "react";
 import { Container } from "flux/utils";
 import { Abstractions } from "simplr-flux";
+
 import { WeatherStore } from "../../stores/weather-store";
 import { CityWeatherData } from "../../contracts/city-weather-data";
 import { ActionsCreators } from "../../actions/main-weather-actions/action-creators";
+import { CityListStore } from "../../stores/citylist-store";
 
 import "./weather-container.css";
-import { CityListStore } from "../../stores/citylist-store";
+
 interface State {
     cityData: CityWeatherData;
     status: Abstractions.ItemStatus;
     selected: boolean;
     cityList: CityWeatherData[];
     cityCountry: string;
-    // imageUrl: string;
 }
 
 class WeatherContainerClass extends React.Component<{}, State> {
@@ -27,8 +28,7 @@ class WeatherContainerClass extends React.Component<{}, State> {
             status: WeatherStore.getState().status,
             selected: WeatherStore.getState().selected,
             cityList: CityListStore.getState().cities,
-            cityCountry: WeatherStore.getState().cityCountryName,
-            // imageUrl: WeatherStore.getState().cityImage
+            cityCountry: WeatherStore.getState().cityCountryName
         };
     }
     protected SubmitFavorite = (): void => {

@@ -57,7 +57,7 @@ class CityListContainerClass extends React.Component<{}, State> {
                                 <img src="https://www.freeiconspng.com/uploads/trash-can-icon-21.png" />
                             </div>
                             <div className="button" >
-                                <NavLink to="/map">
+                                <NavLink to="/map" >
                                 <img src="https://s3.amazonaws.com/iconbros/icons/icon_pngs/000/000/355/original/map.png?1510933432" />
                                 </NavLink>
                             </div>

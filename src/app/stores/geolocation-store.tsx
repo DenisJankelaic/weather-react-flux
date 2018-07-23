@@ -33,7 +33,8 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
                 weather: "",
                 lat: 0,
                 long: 0,
-                url: ""
+                url: "",
+                index: 0
             },
             long: 0,
             lat: 0,
@@ -62,7 +63,8 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
                 wind: action.Data.wind.speed,
                 weather: action.Data.weather[0].main,
                 lat: action.Data.coord.lat,
-                long: action.Data.coord.lon
+                long: action.Data.coord.lon,
+                index: action.Data.id
             },
             status: Abstractions.ItemStatus.Loaded
         };

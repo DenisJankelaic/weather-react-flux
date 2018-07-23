@@ -9,4 +9,5 @@ export interface CityWeatherData {
     lat: number;
     long: number;
     url: string;
+    index: number;
 }

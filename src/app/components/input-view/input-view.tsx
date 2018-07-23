@@ -50,7 +50,8 @@ export class InputView extends React.Component<{}, State> {
                         onKeyPress={this.Submit}
                         placeholder="Write city name here"
                         value={this.state.inputCityName}
-                    /><span></span>
+                    />
+                    <span></span>
                 </span>
             </p>);
     }
