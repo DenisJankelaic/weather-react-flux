@@ -60,6 +60,8 @@ class WeatherContainerClass extends React.Component<{}, State> {
             case Abstractions.ItemStatus.Loaded: {
                 return (
                     <div className="weather" >
+                        <div className="hujik">
+                            <img src={cityData.url} /> </div>
                         <div className="container">
                             <div className="first-row">
                                 <div className="city">
@@ -94,9 +96,7 @@ class WeatherContainerClass extends React.Component<{}, State> {
                                     <div className="button" onClick={this.SubmitFavorite}>Add to favorites</div>}
                             </div>
                         </div >
-                        <div className="pic">
-                            <img src={cityData.url} /> </div>
-                    </div>
+                    </div >
                 );
             }
             case Abstractions.ItemStatus.Failed: {

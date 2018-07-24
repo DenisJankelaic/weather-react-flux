@@ -3,6 +3,7 @@ import { CountryData } from "../../contracts/country";
 export class SubmitActionFailed { }
 export class SubmitActionPending { }
 export class GetCountryNameActionFailed { }
+export class ChangeMainWeatherButton { }
 export class SubmitActionSucceeded {
     constructor(private cityWeatherData: ApiWeatherData) {
     }
@@ -33,6 +34,4 @@ export class GetCityImage {
     public get CityImageUrl(): string {
         return this.cityImageUrl;
     }
-}
-export class ChangeMainWeatherButton {
 }

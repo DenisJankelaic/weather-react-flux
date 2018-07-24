@@ -122,6 +122,7 @@
         "@types/google-images": "^2.1.0",
         "google-images": "^2.1.0",
         "google-map-react": "^1.0.5",
+        "npm": "^6.2.0",
         "react-google-maps": "^9.4.5",
         "simplr-flux": "^2.3.1"
     }

@@ -12,6 +12,7 @@ import {
 import { ActionsCreators } from "../../actions/city-list-actions/action-creators";
 
 import "./city-list-container.css";
+import { GeolocationStore } from "../../stores/geolocation-store";
 
 interface State {
     cities: CityWeatherData[];
@@ -19,7 +20,7 @@ interface State {
 
 class CityListContainerClass extends React.Component<{}, State> {
     public static getStores(): Container.StoresList {
-        return [CityListStore];
+        return [CityListStore, GeolocationStore];
     }
 
     public static calculateState(state: State): State {
@@ -58,7 +59,7 @@ class CityListContainerClass extends React.Component<{}, State> {
                             </div>
                             <div className="button" >
                                 <NavLink to="/map" >
-                                <img src="https://s3.amazonaws.com/iconbros/icons/icon_pngs/000/000/355/original/map.png?1510933432" />
+                                    <img src="https://s3.amazonaws.com/iconbros/icons/icon_pngs/000/000/355/original/map.png?1510933432" />
                                 </NavLink>
                             </div>
                         </div>

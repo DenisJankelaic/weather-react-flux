@@ -1,14 +1,20 @@
 .map-view {
-    .geolocation{
-
+    .geolocation {
+        bottom: 15px;
+        position: absolute;
+        width: 100%;
+        z-index: 9;
+        opacity: 0.5;
+        &:hover{
+            opacity: 0.7;
+        }
     }
-    .map{
-    }
+    .map {}
     .back-button {
         img {
             position: absolute;
-            top: 70px;
-            left: 120px;
+            top: 10px;
+            left: 10px;
             width: 48px;
             height: 48px;
             opacity: 0.3;

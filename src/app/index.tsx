@@ -15,9 +15,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={WeatherWindowView} />
-          <Route exact
-          path="/map"
-          component={MapContainer}
+          <Route exact path="/map" component={MapContainer}
           />
           </Switch>
       </BrowserRouter>

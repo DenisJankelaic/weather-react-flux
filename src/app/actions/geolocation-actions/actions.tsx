@@ -8,8 +8,6 @@ export class SubmitGeolocation {
     }
 }
 
-export class SubmitGeolocationFailed { }
-
 export class InitGeolocation {
     constructor(private long: number, private lat: number) { }
     public get Long(): number {
@@ -19,3 +17,5 @@ export class InitGeolocation {
         return this.lat;
     }
 }
+
+export class SubmitGeolocationFailed { }
