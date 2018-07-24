@@ -39,10 +39,10 @@ export namespace ActionsCreators {
     }
     export async function GetCityImageAction(city: string): Promise<void> {
         // tslint:disable-next-line:max-line-length
-        const searchapicall = await fetch(`https://www.googleapis.com/customsearch/v1?cx=${GS_E_ID}&key=${GS_API_KEY}&imgSize=xxLarge&imgType=photo&searchType=image&q=${city}%20City`);
+        const searchapicall = await fetch(`https://www.googleapis.com/customsearch/v1?cx=${GS_E_ID}&key=${GS_API_KEY}&imgSize=xxLarge&imgType=photo&searchType=image&q=${city}`);
         const searchdata: ApiSearchData = await searchapicall.json();
 
-        Dispatcher.dispatch(new GetCityImage(searchdata.items[0].link));
+        Dispatcher.dispatch(new GetCityImage(searchdata.items));
     }
     export function SubmitFavoriteAction(data: CityWeatherData): void {
         Dispatcher.dispatch(new SubmitFavorite(data));

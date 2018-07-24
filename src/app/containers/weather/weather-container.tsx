@@ -15,6 +15,7 @@ interface State {
     selected: boolean;
     cityList: CityWeatherData[];
     cityCountry: string;
+    random?: number;
 }
 
 class WeatherContainerClass extends React.Component<{}, State> {
@@ -53,6 +54,17 @@ class WeatherContainerClass extends React.Component<{}, State> {
     protected GetCountryName = (): void => {
         ActionsCreators.GetCountryNameAction(this.state.cityData.country);
     }
+    protected GenerateRandom = (): void => {
+        const randomNumber = (Math.floor(Math.random() * (this.state.cityData.imageArray.length - 1)) + 1);
+        if (randomNumber !== this.state.random) {
+            this.setState(state => ({
+                ...state,
+                random: (Math.floor(Math.random() * (this.state.cityData.imageArray.length - 1)) + 1)
+            }));
+        } else {
+            this.GenerateRandom();
+        }
+    }
     public render(): JSX.Element {
         this.GetCountryName();
         const { cityData, status } = this.state;
@@ -61,7 +73,10 @@ class WeatherContainerClass extends React.Component<{}, State> {
                 return (
                     <div className="weather" >
                         <div className="hujik">
-                            <img src={cityData.url} /> </div>
+                            {cityData.imageArray.length > 0 ?
+                                <img src={cityData.imageArray[this.state.random != null ? this.state.random : 0].link} />
+                                : ""}
+                        </div>
                         <div className="container">
                             <div className="first-row">
                                 <div className="city">
@@ -94,6 +109,7 @@ class WeatherContainerClass extends React.Component<{}, State> {
                                 {this.state.selected ?
                                     <div className="button" onClick={this.DeleteCity}>Delete from favorites</div> :
                                     <div className="button" onClick={this.SubmitFavorite}>Add to favorites</div>}
+                                <div className="button" onClick={this.GenerateRandom}> Random background </div>
                             </div>
                         </div >
                     </div >

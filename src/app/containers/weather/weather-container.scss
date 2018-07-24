@@ -6,7 +6,7 @@
     color: white;
     position: relative;
     max-height: 560px;
-    min-height: 560px;
+    min-height: 480px;
     .hujik{
         img{
             position: fixed;
@@ -129,11 +129,12 @@
             }
         }
         .third-row {
-            margin-top: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 15px;
             .button {
+                margin-left: 15px;
                 font-weight: bold;
                 color: #fff !important;
                 text-transform: uppercase;
@@ -153,6 +154,7 @@
                     transition: all 0.4s ease 0s;
                 }
             }
+
         }
     }
 }

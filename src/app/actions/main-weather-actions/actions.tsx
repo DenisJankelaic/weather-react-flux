@@ -1,5 +1,6 @@
 import { ApiWeatherData } from "../../contracts/weather";
 import { CountryData } from "../../contracts/country";
+import { Item } from "../../contracts/city-api-search-data";
 export class SubmitActionFailed { }
 export class SubmitActionPending { }
 export class GetCountryNameActionFailed { }
@@ -29,9 +30,9 @@ export class InitGeolocation {
     }
 }
 export class GetCityImage {
-    constructor(private cityImageUrl: string) {
+    constructor(private cityImageArray: Item[]) {
     }
-    public get CityImageUrl(): string {
-        return this.cityImageUrl;
+    public get CityImageArray(): Item[] {
+        return this.cityImageArray;
     }
 }

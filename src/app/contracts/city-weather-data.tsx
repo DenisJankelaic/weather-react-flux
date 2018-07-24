@@ -1,3 +1,5 @@
+import { Item } from "./city-api-search-data";
+
 export interface CityWeatherData {
     city: string;
     country: string;
@@ -8,6 +10,7 @@ export interface CityWeatherData {
     weather: string;
     lat: number;
     long: number;
-    url: string;
+    imageArray: Item[];
     index: number;
+
 }

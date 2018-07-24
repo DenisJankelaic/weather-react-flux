@@ -19,7 +19,6 @@ interface StoreState {
     status: Abstractions.ItemStatus;
     selected: boolean;
     cityCountryName: string;
-    cityImage: string;
 }
 
 class WeatherStoreClass extends ReduceStore<StoreState> {
@@ -45,13 +44,12 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
                 weather: "",
                 lat: 0,
                 long: 0,
-                url: "",
-                index: 0
+                index: 0,
+                imageArray: []
             },
             status: Abstractions.ItemStatus.Init,
             selected: false,
             cityCountryName: "",
-            cityImage: ""
         };
     }
 
@@ -108,7 +106,7 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
             ...state,
             cityData: {
                 ...this.getState().cityData,
-                url: action.CityImageUrl
+                imageArray: action.CityImageArray
             }
         };
         return nextState;

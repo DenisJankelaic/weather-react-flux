@@ -14,6 +14,7 @@ const MapWithAMarker = withScriptjs(withGoogleMap((props: Props) =>
         defaultZoom={8}
         defaultCenter={{ lat: props.centerCity.lat, lng: props.centerCity.long }}
         //TODO: Fix this red line.. somehow. (everything works)
+        // @ts-ignore
         defaultOptions={{ styles: MapStyle, streetViewControl: false, zoomControl: false, mapTypeControl: false }}
     >
         {props.markers.map(marker => <Marker key={marker.index} position={{ lat: marker.lat, lng: marker.long }}
