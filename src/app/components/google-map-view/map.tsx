@@ -2,9 +2,9 @@ import * as React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import { NavLink } from "react-router-dom";
 
-import { CityWeatherData } from "../../contracts/city-weather-contracts";
 import { MapStyle } from "./map-style";
 import { GeolocationView } from "../geolocation-view";
+import { CityWeatherData } from "../../contracts/city-weather-contracts";
 
 import { GM_API_KEY } from "../../shared/api-keys/gm-api-key";
 

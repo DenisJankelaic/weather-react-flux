@@ -5,8 +5,10 @@
     font-family: 'Quicksand', sans-serif; // filter: blur(2px);
     color: white;
     position: relative;
-    max-height: 560px;
     min-height: 480px;
+    @media only screen and (max-width: 655px) {
+        height: 100%;
+    }
     .background {
         img {
             position: fixed;
@@ -29,10 +31,19 @@
         transform: translate(-50%, -50%);
         text-shadow: 2px 2px 8px black;
         margin-left: 25px;
+        @media only screen and (max-width: 655px) {
+            margin-left: 0;
+        }
         .first-row {
             min-height: 200px;
             display: flex;
             max-width: 100vw;
+            @media only screen and (max-width: 655px) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
             .city {
                 font-family: 'Noto Sans', sans-serif;
                 width: 40%;
@@ -43,6 +54,9 @@
                 font-weight: bold;
                 letter-spacing: 6px;
                 line-height: normal;
+                @media only screen and (max-width: 655px) {
+                    margin-left: 35px;
+                }
             }
             .desc {
                 width: 60%;
@@ -59,6 +73,13 @@
             min-height: 200x;
             display: flex;
             flex-direction: row;
+            max-width: 100vw;
+            @media only screen and (max-width: 655px) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
             .left-side {
                 width: 50%;
                 display: flex;
@@ -101,7 +122,14 @@
                 }
             }
             .right-side {
-                font-family: 'Raleway', serif;
+                @media only screen and (max-width: 655px) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+                font-family: 'Raleway',
+                serif;
                 width: 100%;
                 display: flex;
                 justify-content: center;
@@ -119,6 +147,16 @@
             align-items: center;
             justify-content: center;
             margin-top: 15px;
+            max-width: 100vw;
+            @media only screen and (max-width: 655px) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .button {
+                    margin-top: 15px;
+                }
+            }
             .button {
                 margin-left: 15px;
                 font-weight: bold;
@@ -142,7 +180,8 @@
             }
         }
     }
-    .pending, .failed{
+    .pending,
+    .failed {
         display: flex;
         justify-content: center;
         .load {

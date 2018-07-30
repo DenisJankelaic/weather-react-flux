@@ -1,10 +1,10 @@
 import * as React from "react";
+import { Abstractions } from "simplr-flux";
 import { Container } from "flux/utils";
 
 import { ActionsCreators } from "../../actions/geolocation-actions/action-creators";
 import { GeolocationStore } from "../../stores/geolocation-store";
 import { CityWeatherData } from "../../contracts/city-weather-contracts";
-import { Abstractions } from "simplr-flux";
 
 import "./geolocation-view.css";
 
@@ -49,18 +49,22 @@ class GeolocationContainerClass extends React.Component<{}, State> {
             }
             case Abstractions.ItemStatus.Init: {
                 return (
-                    <div className="pending">
-                        <div className="load">
-                            <div className="img">
-                                <img src="https://i.pinimg.com/originals/3d/1b/73/3d1b739fb2546948f207d2be7ae1b105.gif" />
-                            </div>
-                        </div></div>
+                    <div className="current-location">
+                        <div className="pending">
+                            <div className="load">
+                                <div className="img">
+                                    <img src="https://i.pinimg.com/originals/3d/1b/73/3d1b739fb2546948f207d2be7ae1b105.gif" />
+                                </div>
+                            </div></div>
+                    </div>
                 );
             }
             case Abstractions.ItemStatus.Failed: {
                 return (
-                    <div className="Failed">
-                        <img src="http://www.jmkxyy.com/failed-icon/failed-icon-22.jpg" />
+                    <div className="current-location">
+                        <div className="Failed">
+                            <img src="http://www.jmkxyy.com/failed-icon/failed-icon-22.jpg" />
+                        </div>
                     </div>
                 );
             }

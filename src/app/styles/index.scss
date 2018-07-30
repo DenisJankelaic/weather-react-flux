@@ -23,6 +23,7 @@
             align-items: center;
             flex-direction: column;
             min-width: 512px;
+            display: -webkit-box;
             @media only screen and (max-width: 1020px) {
                 display: -webkit-box;
             }
@@ -32,7 +33,6 @@
                 min-width: 250px;
                 max-width: 500px;
             }
-            .weather-data {}
         }
         .city-list-view {
             display: none;

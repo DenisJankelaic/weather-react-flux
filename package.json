@@ -42,6 +42,12 @@
             "jspm": "src/configs/jspm.config.js"
         },
         "dependencies": {
+        },
+        "devDependencies": {
+            "google-images": "^2.1.0",
+            "google-map-react": "^1.0.5",
+            "react-google-maps": "^9.4.5",
+            "simplr-flux": "^2.3.1",
             "action-emitter": "npm:action-emitter@^0.2.1",
             "google-images": "npm:google-images@^2.1.0",
             "google-map-react": "npm:google-map-react@^1.0.5",
@@ -50,7 +56,6 @@
             "react-router-dom": "npm:react-router-dom@^4.2.2",
             "simplr-flux": "npm:simplr-flux@^2.3.0"
         },
-        "devDependencies": {},
         "peerDependencies": {
             "@types/googlemaps": "npm:@types/googlemaps@^3.0.0",
             "@types/markerclustererplus": "npm:@types/markerclustererplus@^2.1.29",
@@ -119,10 +124,5 @@
             }
         }
     },
-    "dependencies": {
-        "google-images": "^2.1.0",
-        "google-map-react": "^1.0.5",
-        "react-google-maps": "^9.4.5",
-        "simplr-flux": "^2.3.1"
-    }
+    "dependencies": {}
 }

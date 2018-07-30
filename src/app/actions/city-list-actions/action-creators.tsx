@@ -6,7 +6,6 @@ import {
     SubmitSelectedCity
 } from "./actions";
 import { ChangeMainWeatherButton } from "../main-weather-actions/actions";
-
 import { CityWeatherData } from "../../contracts/city-weather-contracts";
 
 export namespace ActionsCreators {

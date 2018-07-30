@@ -3,7 +3,6 @@ import { GeolocationView } from "./geolocation-view";
 import { InputView } from "./input-view/input-view";
 import { WeatherView } from "./weather-view";
 import { CityListView } from "./city-view/citylist-view";
-// import { AutoInputView } from "./input-view/bad-input-view";
 
 import "../styles/index.css";
 export class WeatherWindowView extends React.Component<{}> {
