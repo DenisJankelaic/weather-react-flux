@@ -3,7 +3,7 @@ import { Container } from "flux/utils";
 
 import { ActionsCreators } from "../../actions/geolocation-actions/action-creators";
 import { GeolocationStore } from "../../stores/geolocation-store";
-import { CityWeatherData } from "../../contracts/city-weather-data";
+import { CityWeatherData } from "../../contracts/city-weather-contracts";
 import { Abstractions } from "simplr-flux";
 
 import "./geolocation-view.css";

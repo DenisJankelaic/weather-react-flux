@@ -1,6 +1,7 @@
 import { ApiWeatherData } from "../../contracts/weather";
 import { CountryData } from "../../contracts/country";
-import { Item } from "../../contracts/city-api-search-data";
+import { Item } from "../../contracts/city-api-search-contracts";
+
 export class SubmitActionFailed { }
 export class SubmitActionPending { }
 export class GetCountryNameActionFailed { }

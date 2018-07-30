@@ -1,10 +1,10 @@
 import { ReduceStore, ActionHandler, Abstractions } from "simplr-flux";
 
-import { CityWeatherData } from "../contracts/city-weather-data";
+import { CityWeatherData } from "../contracts/city-weather-contracts";
 import {
     InitGeolocation,
     SubmitGeolocation,
-    SubmitGeolocationFailed
+    SubmitGeolocationFailedAction
 } from "../actions/geolocation-actions/actions";
 
 interface StoreState {
@@ -19,7 +19,7 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
         super();
         this.registerAction(InitGeolocation, this.onInitGeolocation);
         this.registerAction(SubmitGeolocation, this.onSubmitGeolocation);
-        this.registerAction(SubmitGeolocationFailed, this.onSubmitGeolocationFailed);
+        this.registerAction(SubmitGeolocationFailedAction, this.onSubmitGeolocationFailed);
     }
     public getInitialState(): StoreState {
         return {
@@ -33,8 +33,9 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
                 weather: "",
                 lat: 0,
                 long: 0,
-                url: "",
-                index: 0
+                index: 0,
+                imageArray: [],
+                icon: ""
             },
             long: 0,
             lat: 0,
@@ -71,7 +72,7 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
         return nextState;
     }
 
-    private onSubmitGeolocationFailed: ActionHandler<SubmitGeolocationFailed, StoreState> = (action, state) =>
+    private onSubmitGeolocationFailed: ActionHandler<SubmitGeolocationFailedAction, StoreState> = (action, state) =>
         ({
             ...state,
             status: Abstractions.ItemStatus.Failed

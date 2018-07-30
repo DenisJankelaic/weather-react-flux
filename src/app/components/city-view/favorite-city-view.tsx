@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { CityWeatherData } from "../../contracts/city-weather-data";
+import { CityWeatherData } from "../../contracts/city-weather-contracts";
 
 import "./favorite-city-view.css";
 

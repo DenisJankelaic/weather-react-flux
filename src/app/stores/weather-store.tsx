@@ -1,7 +1,8 @@
 import {
     ReduceStore,
     ActionHandler,
-    Abstractions } from "simplr-flux";
+    Abstractions
+} from "simplr-flux";
 
 import {
     SubmitActionFailed,
@@ -12,7 +13,7 @@ import {
     ChangeMainWeatherButton
 } from "../actions/main-weather-actions/actions";
 import { SubmitSelectedCity } from "../actions/city-list-actions/actions";
-import { CityWeatherData } from "../contracts/city-weather-data";
+import { CityWeatherData } from "../contracts/city-weather-contracts";
 
 interface StoreState {
     cityData: CityWeatherData;
@@ -45,7 +46,8 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
                 lat: 0,
                 long: 0,
                 index: 0,
-                imageArray: []
+                imageArray: [],
+                icon: ""
             },
             status: Abstractions.ItemStatus.Init,
             selected: false,
@@ -53,8 +55,8 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
         };
     }
 
-    private onSubmitActionSucceeded: ActionHandler<SubmitActionSucceeded, StoreState> = (action, state) => {
-        const nextState: StoreState = {
+    private onSubmitActionSucceeded: ActionHandler<SubmitActionSucceeded, StoreState> = (action, state) =>
+        ({
             ...state,
             cityData: {
                 ...this.getState().cityData,
@@ -67,13 +69,12 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
                 weather: action.Data.weather[0].main,
                 lat: action.Data.coord.lat,
                 long: action.Data.coord.lon,
-                index: action.Data.id
+                index: action.Data.id,
+                icon: action.Data.weather[0].icon
             },
             status: Abstractions.ItemStatus.Loaded,
             selected: false
-        };
-        return nextState;
-    }
+        })
 
     private onSubmitActionFailed: ActionHandler<SubmitActionFailed, StoreState> = (action, state) =>
         ({
@@ -94,30 +95,24 @@ class WeatherStoreClass extends ReduceStore<StoreState> {
         };
         return nextState;
     }
-    private onGetCountryName: ActionHandler<GetCountryName, StoreState> = (action, state) => {
-        const nextState: StoreState = {
+    private onGetCountryName: ActionHandler<GetCountryName, StoreState> = (action, state) =>
+        ({
             ...state,
             cityCountryName: action.Country.name
-        };
-        return nextState;
-    }
-    private onGetCityImage: ActionHandler<GetCityImage, StoreState> = (action, state) => {
-        const nextState: StoreState = {
+        })
+    private onGetCityImage: ActionHandler<GetCityImage, StoreState> = (action, state) =>
+        ({
             ...state,
             cityData: {
                 ...this.getState().cityData,
                 imageArray: action.CityImageArray
             }
-        };
-        return nextState;
-    }
-    private onChangeButton: ActionHandler<ChangeMainWeatherButton, StoreState> = (action, state) => {
-        const nextState: StoreState = {
+        })
+    private onChangeButton: ActionHandler<ChangeMainWeatherButton, StoreState> = (action, state) =>
+        ({
             ...state,
             selected: false
-        };
-        return nextState;
-    }
+        })
 }
 
 export const WeatherStore = new WeatherStoreClass();

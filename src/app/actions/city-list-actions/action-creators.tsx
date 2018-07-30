@@ -5,8 +5,9 @@ import {
     DeleteAllFavorites,
     SubmitSelectedCity
 } from "./actions";
-import { CityWeatherData } from "../../contracts/city-weather-data";
 import { ChangeMainWeatherButton } from "../main-weather-actions/actions";
+
+import { CityWeatherData } from "../../contracts/city-weather-contracts";
 
 export namespace ActionsCreators {
     export function DeleteFavoriteAction(data: string): void {

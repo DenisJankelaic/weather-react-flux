@@ -1,4 +1,4 @@
-import { CityWeatherData } from "../../contracts/city-weather-data";
+import { CityWeatherData } from "../../contracts/city-weather-contracts";
 
 export class SubmitFavorite {
     constructor(private CityData: CityWeatherData) {

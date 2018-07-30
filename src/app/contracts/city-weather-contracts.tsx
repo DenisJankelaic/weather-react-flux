@@ -1,4 +1,4 @@
-import { Item } from "./city-api-search-data";
+import { Item } from "./city-api-search-contracts";
 
 export interface CityWeatherData {
     city: string;
@@ -12,5 +12,5 @@ export interface CityWeatherData {
     long: number;
     imageArray: Item[];
     index: number;
-
+    icon: string;
 }

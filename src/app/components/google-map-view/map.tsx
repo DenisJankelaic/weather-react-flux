@@ -2,9 +2,10 @@ import * as React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import { NavLink } from "react-router-dom";
 
-import { GeolocationView } from "../geolocation-view";
-import { CityWeatherData } from "../../contracts/city-weather-data";
+import { CityWeatherData } from "../../contracts/city-weather-contracts";
 import { MapStyle } from "./map-style";
+import { GeolocationView } from "../geolocation-view";
+
 import { GM_API_KEY } from "../../shared/api-keys/gm-api-key";
 
 import "./map.css";
@@ -48,7 +49,7 @@ export class WorldMapView extends React.Component<Props> {
                 <div className="map">
                     <MapWithAMarker
                         // tslint:disable-next-line:max-line-length
-                        googleMapURL= {`https://maps.googleapis.com/maps/api/js?key=${GM_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
+                        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GM_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
                         loadingElement={<div style={{ height: "100%" }} />}
                         containerElement={<div style={{ height: "100%" }} />}
                         mapElement={<div style={{ height: "100%" }} />}

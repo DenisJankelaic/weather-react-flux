@@ -18,4 +18,4 @@ export class InitGeolocation {
     }
 }
 
-export class SubmitGeolocationFailed { }
+export class SubmitGeolocationFailedAction { }

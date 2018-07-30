@@ -2,17 +2,19 @@ import * as React from "react";
 import { NavLink } from "react-router-dom";
 import { Container } from "flux/utils";
 
+import { ActionsCreators } from "../../actions/city-list-actions/action-creators";
+
 import { CityListStore } from "../../stores/citylist-store";
-import { CityWeatherData } from "../../contracts/city-weather-data";
+import { GeolocationStore } from "../../stores/geolocation-store";
+
+import { CityWeatherData } from "../../contracts/city-weather-contracts";
 import {
     DeleteClicked,
     FavoriteCity,
     SelectCity
 } from "../../components/city-view/favorite-city-view";
-import { ActionsCreators } from "../../actions/city-list-actions/action-creators";
 
 import "./city-list-container.css";
-import { GeolocationStore } from "../../stores/geolocation-store";
 
 interface State {
     cities: CityWeatherData[];

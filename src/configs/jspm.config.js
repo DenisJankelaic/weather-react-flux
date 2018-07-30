@@ -63,7 +63,8 @@ SystemJS.config({
     "history": "npm:history@4.7.2",
     "immutable": "npm:immutable@3.8.2",
     "office-ui-fabric-react": "npm:office-ui-fabric-react@5.67.0",
-    "geolocation": "npm:geolocation@0.2.0"
+    "geolocation": "npm:geolocation@0.2.0",
+    "@types/google-images": "npm:@types/google-images@2.1.0"
   }
 });
 
@@ -73,10 +74,11 @@ SystemJS.config({
     "npm:*.json"
   ],
   map: {
-    "@types/google-images": "npm:@types/google-images@2.1.0",
+    "@types/react-places-autocomplete": "npm:@types/react-places-autocomplete@6.1.2",
+    "@types/react-geosuggest": "npm:@types/react-geosuggest@2.7.6",
     "@types/googlemaps": "npm:@types/googlemaps@3.30.11",
     "@types/markerclustererplus": "npm:@types/markerclustererplus@2.1.33",
-    "@types/react": "npm:@types/react@16.4.6",
+    "@types/react": "npm:@types/react@16.4.7",
     "google-images": "npm:google-images@2.1.0",
     "google-map-react": "npm:google-map-react@1.0.5",
     "action-emitter": "npm:action-emitter@0.2.1",
@@ -98,7 +100,9 @@ SystemJS.config({
     "querystring": "npm:jspm-nodelibs-querystring@0.2.2",
     "react": "npm:react@16.3.1",
     "react-dom": "npm:react-dom@16.0.0",
+    "react-geosuggest": "npm:react-geosuggest@2.8.0",
     "react-google-maps": "npm:react-google-maps@9.4.5",
+    "react-places-autocomplete": "npm:react-places-autocomplete@7.2.0",
     "react-router": "npm:react-router@4.2.0",
     "react-router-dom": "npm:react-router-dom@4.2.2",
     "simplr-flux": "npm:simplr-flux@2.3.0",
@@ -394,7 +398,7 @@ SystemJS.config({
     "npm:@types/flux@3.1.7": {
       "map": {
         "@types/fbemitter": "npm:@types/fbemitter@2.0.32",
-        "@types/react": "npm:@types/react@16.4.6"
+        "@types/react": "npm:@types/react@16.4.7"
       }
     },
     "npm:readable-stream@2.3.6": {
@@ -612,11 +616,6 @@ SystemJS.config({
         "regenerator-runtime": "npm:regenerator-runtime@0.11.1"
       }
     },
-    "npm:@types/react@16.4.6": {
-      "map": {
-        "csstype": "npm:csstype@2.5.5"
-      }
-    },
     "npm:recompose@0.26.0": {
       "map": {
         "fbjs": "npm:fbjs@0.8.17",
@@ -633,6 +632,42 @@ SystemJS.config({
     "npm:@types/google-maps@3.2.0": {
       "map": {
         "@types/googlemaps": "npm:@types/googlemaps@3.30.11"
+      }
+    },
+    "npm:@types/react-geosuggest@2.7.6": {
+      "map": {
+        "@types/react": "npm:@types/react@16.4.7",
+        "@types/googlemaps": "npm:@types/googlemaps@3.30.11"
+      }
+    },
+    "npm:@types/react@16.4.7": {
+      "map": {
+        "csstype": "npm:csstype@2.5.6"
+      }
+    },
+    "npm:react-geosuggest@2.8.0": {
+      "map": {
+        "lodash.debounce": "npm:lodash.debounce@4.0.8",
+        "classnames": "npm:classnames@2.2.6",
+        "react-addons-shallow-compare": "npm:react-addons-shallow-compare@15.6.2"
+      }
+    },
+    "npm:react-addons-shallow-compare@15.6.2": {
+      "map": {
+        "fbjs": "npm:fbjs@0.8.17",
+        "object-assign": "npm:object-assign@4.1.1"
+      }
+    },
+    "npm:@types/react-places-autocomplete@6.1.2": {
+      "map": {
+        "@types/googlemaps": "npm:@types/googlemaps@3.30.11",
+        "@types/react": "npm:@types/react@16.4.7"
+      }
+    },
+    "npm:react-places-autocomplete@7.2.0": {
+      "map": {
+        "lodash.debounce": "npm:lodash.debounce@4.0.8",
+        "prop-types": "npm:prop-types@15.6.2"
       }
     }
   }

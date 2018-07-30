@@ -2,10 +2,11 @@ import * as React from "react";
 import { Container } from "flux/utils";
 
 import { CityListStore } from "../../stores/citylist-store";
-import { CityWeatherData } from "../../contracts/city-weather-data";
-import "./city-list-container.css";
-import { WorldMapView } from "../../components/google-map-view/map";
 import { GeolocationStore } from "../../stores/geolocation-store";
+import { WorldMapView } from "../../components/google-map-view/map";
+import { CityWeatherData } from "../../contracts/city-weather-contracts";
+
+import "./city-list-container.css";
 
 interface State {
     cities: CityWeatherData[];
