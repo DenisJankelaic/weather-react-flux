@@ -1,0 +1,48 @@
+
+.weather-window {
+    display: flex;
+    flex-flow: column;
+    .header {
+        z-index: 2;
+        .geolocation-view {
+            width: 100%;
+        }
+    }
+    .main {
+        @media only screen and (max-width: 1020px) {
+            flex-flow: column;
+            display: flex;
+            align-items: center;
+        }
+        display: flex;
+        flex-flow: row-reverse;
+        height: 100%;
+        .input-city {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            min-width: 512px;
+            display: -webkit-box;
+            @media only screen and (max-width: 1020px) {
+                display: -webkit-box;
+            }
+            .input-view {
+                max-height: 100px;
+                min-height: 50px;
+                min-width: 250px;
+                max-width: 500px;
+            }
+        }
+        .city-list-view {
+            display: none;
+            max-width: 250px;
+            display: flex;
+            margin-top: 50px;
+            @media only screen and (max-width: 1020px) {
+                margin-top: 0px;
+            }
+            
+        }
+    }
+}
