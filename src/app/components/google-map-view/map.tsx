@@ -29,6 +29,7 @@ const MapWithAMarker = withScriptjs(withGoogleMap((props: Props) =>
                 scale: 15,
             }}
             label={{ text: marker.temperature.toFixed(0).toString() }}
+            title={marker.city}
         />
         )}
     </GoogleMap >));

@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway|Quicksand|Julius+Sans+One|Noto+Sans");
 .weather {
     max-width: 760px;
-    min-width: 760px;
-    font-family: 'Quicksand', sans-serif; // filter: blur(2px);
+    min-width: 320px;
+    width: 100vw;
+    font-family: 'Quicksand', sans-serif; 
     color: white;
     position: relative;
     min-height: 480px;
@@ -31,6 +32,7 @@
         transform: translate(-50%, -50%);
         text-shadow: 2px 2px 8px black;
         margin-left: 25px;
+        user-select: none;
         @media only screen and (max-width: 655px) {
             margin-left: 0;
         }
