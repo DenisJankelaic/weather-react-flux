@@ -1,16 +1,15 @@
 import * as React from "react";
-
 import { ActionsCreators } from "../../actions/main-weather-actions/action-creators";
 
 import "./input-view.css";
 
 interface State {
-    inputCityName: string;
+     inputCityName: string;
 }
 
 export class InputView extends React.Component<{}, State> {
     public state: State = {
-        inputCityName: "",
+        inputCityName: ""
     };
 
     protected CityChange: React.ChangeEventHandler<HTMLInputElement> = event => {
@@ -31,6 +30,7 @@ export class InputView extends React.Component<{}, State> {
             alert("Blank input");
         } else {
             ActionsCreators.SubmitAction(city);
+            ActionsCreators.GetCityImageAction(city);
         }
     }
 
@@ -43,14 +43,16 @@ export class InputView extends React.Component<{}, State> {
     public render(): JSX.Element {
         return (
             <p>
-            <span className="input">
-                <input
-                    onChange={this.CityChange}
-                    onKeyPress={this.Submit}
-                    placeholder="Write city name here"
-                    value={this.state.inputCityName}
-                /><span></span>
-            </span>
-            </p>);
+                <span className="input">
+                    <input
+                        onChange={this.CityChange}
+                        onKeyPress={this.Submit}
+                        placeholder="Write city name here"
+                        value={this.state.inputCityName}
+                    />
+                    <span></span>
+                </span>
+            </p>
+            );
     }
 }

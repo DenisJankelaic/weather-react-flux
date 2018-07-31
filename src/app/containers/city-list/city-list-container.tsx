@@ -2,14 +2,17 @@ import * as React from "react";
 import { NavLink } from "react-router-dom";
 import { Container } from "flux/utils";
 
+import { ActionsCreators } from "../../actions/city-list-actions/action-creators";
+
 import { CityListStore } from "../../stores/citylist-store";
-import { CityWeatherData } from "../../contracts/city-weather-data";
+import { GeolocationStore } from "../../stores/geolocation-store";
+
+import { CityWeatherData } from "../../contracts/city-weather-contracts";
 import {
     DeleteClicked,
     FavoriteCity,
     SelectCity
 } from "../../components/city-view/favorite-city-view";
-import { ActionsCreators } from "../../actions/city-list-actions/action-creators";
 
 import "./city-list-container.css";
 
@@ -19,7 +22,7 @@ interface State {
 
 class CityListContainerClass extends React.Component<{}, State> {
     public static getStores(): Container.StoresList {
-        return [CityListStore];
+        return [CityListStore, GeolocationStore];
     }
 
     public static calculateState(state: State): State {
@@ -57,8 +60,8 @@ class CityListContainerClass extends React.Component<{}, State> {
                                 <img src="https://www.freeiconspng.com/uploads/trash-can-icon-21.png" />
                             </div>
                             <div className="button" >
-                                <NavLink to="/map">
-                                <img src="https://s3.amazonaws.com/iconbros/icons/icon_pngs/000/000/355/original/map.png?1510933432" />
+                                <NavLink to="/map" >
+                                    <img src="https://s3.amazonaws.com/iconbros/icons/icon_pngs/000/000/355/original/map.png?1510933432" />
                                 </NavLink>
                             </div>
                         </div>

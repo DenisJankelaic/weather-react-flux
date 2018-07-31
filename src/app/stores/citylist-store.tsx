@@ -1,6 +1,6 @@
 import { ReduceStore, ActionHandler } from "simplr-flux";
 
-import { CityWeatherData } from "../contracts/city-weather-data";
+import { CityWeatherData } from "../contracts/city-weather-contracts";
 import {
     SubmitFavorite,
     DeleteFavorite,

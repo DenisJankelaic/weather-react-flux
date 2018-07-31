@@ -9,7 +9,9 @@
         "start": "gulp"
     },
     "devDependencies": {
+        "@types/google-images": "^2.1.0",
         "@types/markerclustererplus": "^2.1.33",
+        "@types/google-images": "npm:@types/google-images@^2.1.0",
         "@types/google-map-react": "^0.23.4",
         "@types/googlemaps": "^3.30.11",
         "@types/history": "^4.6.2",
@@ -40,15 +42,24 @@
             "jspm": "src/configs/jspm.config.js"
         },
         "dependencies": {
+        },
+        "devDependencies": {
+            "google-images": "^2.1.0",
+            "google-map-react": "^1.0.5",
+            "react-google-maps": "^9.4.5",
+            "simplr-flux": "^2.3.1",
             "action-emitter": "npm:action-emitter@^0.2.1",
+            "google-images": "npm:google-images@^2.1.0",
             "google-map-react": "npm:google-map-react@^1.0.5",
-            "querystring": "npm:querystring@^0.2.0",
+            "react-google-maps": "npm:react-google-maps@^9.4.5",
             "react-router": "npm:react-router@^4.2.0",
             "react-router-dom": "npm:react-router-dom@^4.2.2",
             "simplr-flux": "npm:simplr-flux@^2.3.0"
         },
-        "devDependencies": {},
         "peerDependencies": {
+            "@types/googlemaps": "npm:@types/googlemaps@^3.0.0",
+            "@types/markerclustererplus": "npm:@types/markerclustererplus@^2.1.29",
+            "@types/react": "npm:@types/react@^16.0.0",
             "css": "npm:systemjs-plugin-css@^0.1.35",
             "assert": "npm:jspm-nodelibs-assert@^0.2.0",
             "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
@@ -64,6 +75,7 @@
             "path": "npm:jspm-nodelibs-path@^0.2.0",
             "process": "npm:jspm-nodelibs-process@^0.2.0",
             "prop-types": "npm:prop-types@^15.5.6",
+            "querystring": "npm:jspm-nodelibs-querystring@^0.2.0",
             "react": "npm:react@^16.0.0",
             "react-dom": "npm:react-dom@^16.0.0",
             "stream": "npm:jspm-nodelibs-stream@^0.2.0",
@@ -90,6 +102,12 @@
                     "test.js"
                 ]
             },
+            "npm:lodash@4.17.10": {
+                "map": {
+                    "buffer": "@empty",
+                    "process": "@empty"
+                }
+            },
             "npm:pbkdf2@3.0.16": {
                 "main": "browser.js"
             },
@@ -106,9 +124,5 @@
             }
         }
     },
-    "dependencies": {
-        "google-map-react": "^1.0.5",
-        "react-google-maps": "^9.4.5",
-        "simplr-flux": "^2.3.1"
-    }
+    "dependencies": {}
 }
