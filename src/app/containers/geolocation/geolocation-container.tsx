@@ -35,21 +35,23 @@ class GeolocationContainerClass extends React.Component<{}, State> {
         switch (status) {
             case Abstractions.ItemStatus.Loaded: {
                 return (
-                    <div className="current-location">
-                        <div className="current-info">
-                            <div className="current-city">
-                                <div>{cityData.city}</div>
-                                <div>{cityData.country}</div></div>
-                            <div>{cityData.temperature}°</div>
-                            <div>Wind: {cityData.wind} m/s</div>
-                            <div>Humidity: {cityData.humidity}%</div>
+                    <div className="header">
+                        <div className="current-location">
+                            <div className="current-info">
+                                <div className="current-city">
+                                    <div>{cityData.city}</div>
+                                    <div>{cityData.country}</div></div>
+                                <div>{cityData.temperature}°</div>
+                                <div>Wind: {cityData.wind} m/s</div>
+                                <div>Humidity: {cityData.humidity}%</div>
+                            </div>
                         </div>
                     </div>
                 );
             }
             case Abstractions.ItemStatus.Init: {
                 return (
-                    <div className="current-location">
+                    <div className="header">
                         <div className="pending">
                             <div className="load">
                                 <div className="img">
@@ -61,7 +63,7 @@ class GeolocationContainerClass extends React.Component<{}, State> {
             }
             case Abstractions.ItemStatus.Failed: {
                 return (
-                    <div className="current-location">
+                    <div className="header">
                         <div className="Failed">
                             <img src="http://www.jmkxyy.com/failed-icon/failed-icon-22.jpg" />
                         </div>

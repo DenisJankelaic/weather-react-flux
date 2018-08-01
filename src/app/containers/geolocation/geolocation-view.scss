@@ -1,28 +1,34 @@
 @import url('https://fonts.googleapis.com/css?family=Arsenal');
-.current-location {
-    opacity: 0.85;
-    margin: 10px;
-    padding: 10px;
-    height: 50px;
-    z-index: 10;
-    box-shadow: 0px 0px 100px white;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-family: 'Arsenal', sans-serif;
-    .current-info {
-        width: 100%;
-        color: white;
+.header {
+    .current-location {
+        opacity: 0.85;
+        margin: 10px;
+        padding: 10px;
+        height: 50px;
+        z-index: 10;
+        box-shadow: 0px 0px 100px white;
+        border-radius: 16px;
         display: flex;
-        justify-content: space-around;
         align-items: center;
-        opacity: 1;
-        .current-city {
-            width: 15%;
+        justify-content: center;
+        font-size: 24px;
+        font-family: 'Arsenal', sans-serif;
+        max-width: 100%vw;
+        @media only screen and (max-width: 655px) {
+            font-size: 16px;
+        }
+        .current-info {
+            width: 100%;
+            color: white;
             display: flex;
             justify-content: space-around;
+            align-items: center;
+            opacity: 1;
+            .current-city {
+                width: 15%;
+                display: flex;
+                justify-content: space-around;
+            }
         }
     }
     .Failed,
@@ -32,47 +38,6 @@
         img {
             width: 64px;
             height: 64px;
-        }
-    }
-    background: linear-gradient(308deg,
-    #ece839,
-    #f72e2d,
-    #09a0b4);
-    background-size: 800% 800%;
-    -webkit-animation: header-color 16s ease infinite;
-    -moz-animation: header-color 16s ease infinite;
-    animation: header-color 16s ease infinite;
-    @-webkit-keyframes header-color {
-        0% {
-            background-position: 0% 91%
-        }
-        50% {
-            background-position: 100% 10%
-        }
-        100% {
-            background-position: 0% 91%
-        }
-    }
-    @-moz-keyframes header-color {
-        0% {
-            background-position: 0% 91%
-        }
-        50% {
-            background-position: 100% 10%
-        }
-        100% {
-            background-position: 0% 91%
-        }
-    }
-    @keyframes header-color {
-        0% {
-            background-position: 0% 91%
-        }
-        50% {
-            background-position: 100% 10%
-        }
-        100% {
-            background-position: 0% 91%
         }
     }
 }

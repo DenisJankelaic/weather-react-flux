@@ -2,6 +2,7 @@
 .weather-window {
     display: flex;
     flex-flow: column;
+    overflow-x: hidden;
     .header {
         z-index: 2;
         .geolocation-view {
