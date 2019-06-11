@@ -32,7 +32,8 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
                 description: "",
                 weather: "",
                 lat: 0,
-                long: 0
+                long: 0,
+                url: ""
             },
             long: 0,
             lat: 0,
@@ -52,6 +53,7 @@ class GeolocationStoreClass extends ReduceStore<StoreState> {
         const nextState: StoreState = {
             ...state,
             cityData: {
+                ...this.getState().cityData,
                 city: action.Data.name,
                 country: action.Data.sys.country,
                 description: action.Data.weather[0].description,

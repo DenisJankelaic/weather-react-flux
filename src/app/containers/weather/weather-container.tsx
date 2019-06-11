@@ -10,11 +10,10 @@ import { CityListStore } from "../../stores/citylist-store";
 interface State {
     cityData: CityWeatherData;
     status: Abstractions.ItemStatus;
-    long: number;
-    lat: number;
     selected: boolean;
     cityList: CityWeatherData[];
     cityCountry: string;
+    // imageUrl: string;
 }
 
 class WeatherContainerClass extends React.Component<{}, State> {
@@ -23,13 +22,13 @@ class WeatherContainerClass extends React.Component<{}, State> {
     }
     public static calculateState(state: State): State {
         return {
+            ...state,
             cityData: WeatherStore.getState().cityData,
             status: WeatherStore.getState().status,
-            long: WeatherStore.getState().long,
-            lat: WeatherStore.getState().lat,
             selected: WeatherStore.getState().selected,
             cityList: CityListStore.getState().cities,
-            cityCountry: WeatherStore.getState().cityCountryName
+            cityCountry: WeatherStore.getState().cityCountryName,
+            // imageUrl: WeatherStore.getState().cityImage
         };
     }
     protected SubmitFavorite = (): void => {
@@ -54,47 +53,50 @@ class WeatherContainerClass extends React.Component<{}, State> {
     protected GetCountryName = (): void => {
         ActionsCreators.GetCountryNameAction(this.state.cityData.country);
     }
-
     public render(): JSX.Element {
         this.GetCountryName();
         const { cityData, status } = this.state;
         switch (status) {
             case Abstractions.ItemStatus.Loaded: {
                 return (
-                    <div className="weather">
-                        <div className="first-row">
-                            <div className="city">
-                                {cityData.city.toLocaleUpperCase()} </div>
-                            <div className="desc">
-                                {cityData.description.toLocaleUpperCase()}</div></div>
-                        <div className="second-row">
-                            <div className="left-side">
-                                <div className="temp">
-                                    {cityData.temperature}°
-                                    </div>
+                    <div className="weather" >
+                        <div className="container">
+                            <div className="first-row">
+                                <div className="city">
+                                    {cityData.city.toLocaleUpperCase()} </div>
                                 <div className="desc">
-                                    {cityData.weather.toLocaleUpperCase()}</div>
-                                <div className="bottom-data">
-                                    <div className="humidity">
-                                        <div> HUMIDITY </div>
-                                        <div>{cityData.humidity}%</div>
+                                    {cityData.description.toLocaleUpperCase()}</div></div>
+                            <div className="second-row">
+                                <div className="left-side">
+                                    <div className="temp">
+                                        {cityData.temperature}°
                                     </div>
-                                    <div className="wind">
-                                        <div>WIND</div>
-                                        <div> {cityData.wind}M/S </div></div>
+                                    <div className="desc">
+                                        {cityData.weather.toLocaleUpperCase()}</div>
+                                    <div className="bottom-data">
+                                        <div className="humidity">
+                                            <div> HUMIDITY </div>
+                                            <div>{cityData.humidity}%</div>
+                                        </div>
+                                        <div className="wind">
+                                            <div>WIND</div>
+                                            <div> {cityData.wind}M/S </div></div>
+                                    </div>
+                                </div>
+                                <div className="right-side">
+                                    <div className="country">
+                                        {this.state.cityCountry.toLocaleUpperCase()}</div>
                                 </div>
                             </div>
-                            <div className="right-side">
-                                <div className="country">
-                                    {this.state.cityCountry.toLocaleUpperCase()}</div>
+                            <div className="third-row">
+                                {this.state.selected ?
+                                    <div className="button" onClick={this.DeleteCity}>Delete from favorites</div> :
+                                    <div className="button" onClick={this.SubmitFavorite}>Add to favorites</div>}
                             </div>
-                        </div>
-                        <div className="third-row">
-                            {this.state.selected ?
-                                <div className="button" onClick={this.DeleteCity}>Delete from favorites</div> :
-                                <div className="button" onClick={this.SubmitFavorite}>Add to favorites</div>}
-                        </div>
-                    </div >
+                        </div >
+                        <div className="pic">
+                            <img src={cityData.url} /> </div>
+                    </div>
                 );
             }
             case Abstractions.ItemStatus.Failed: {

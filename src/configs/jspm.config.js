@@ -73,6 +73,11 @@ SystemJS.config({
     "npm:*.json"
   ],
   map: {
+    "@types/google-images": "npm:@types/google-images@2.1.0",
+    "@types/googlemaps": "npm:@types/googlemaps@3.30.11",
+    "@types/markerclustererplus": "npm:@types/markerclustererplus@2.1.33",
+    "@types/react": "npm:@types/react@16.4.6",
+    "google-images": "npm:google-images@2.1.0",
     "google-map-react": "npm:google-map-react@1.0.5",
     "action-emitter": "npm:action-emitter@0.2.1",
     "assert": "npm:jspm-nodelibs-assert@0.2.1",
@@ -90,9 +95,10 @@ SystemJS.config({
     "path": "npm:jspm-nodelibs-path@0.2.3",
     "process": "npm:jspm-nodelibs-process@0.2.1",
     "prop-types": "npm:prop-types@15.6.2",
-    "querystring": "npm:querystring@0.2.0",
+    "querystring": "npm:jspm-nodelibs-querystring@0.2.2",
     "react": "npm:react@16.3.1",
     "react-dom": "npm:react-dom@16.0.0",
+    "react-google-maps": "npm:react-google-maps@9.4.5",
     "react-router": "npm:react-router@4.2.0",
     "react-router-dom": "npm:react-router-dom@4.2.2",
     "simplr-flux": "npm:simplr-flux@2.3.0",
@@ -272,7 +278,7 @@ SystemJS.config({
     },
     "npm:react-router@4.2.0": {
       "map": {
-        "hoist-non-react-statics": "npm:hoist-non-react-statics@2.5.0",
+        "hoist-non-react-statics": "npm:hoist-non-react-statics@2.5.5",
         "warning": "npm:warning@3.0.0",
         "invariant": "npm:invariant@2.2.4",
         "prop-types": "npm:prop-types@15.6.2",
@@ -388,7 +394,7 @@ SystemJS.config({
     "npm:@types/flux@3.1.7": {
       "map": {
         "@types/fbemitter": "npm:@types/fbemitter@2.0.32",
-        "@types/react": "npm:@types/react@16.0.40"
+        "@types/react": "npm:@types/react@16.4.6"
       }
     },
     "npm:readable-stream@2.3.6": {
@@ -552,6 +558,81 @@ SystemJS.config({
       "map": {
         "loose-envify": "npm:loose-envify@1.4.0",
         "object-assign": "npm:object-assign@4.1.1"
+      }
+    },
+    "npm:google-images@2.1.0": {
+      "map": {
+        "got": "npm:got@6.7.1"
+      }
+    },
+    "npm:got@6.7.1": {
+      "map": {
+        "create-error-class": "npm:create-error-class@3.0.2",
+        "timed-out": "npm:timed-out@4.0.1",
+        "is-redirect": "npm:is-redirect@1.0.0",
+        "unzip-response": "npm:unzip-response@2.0.1",
+        "is-retry-allowed": "npm:is-retry-allowed@1.1.0",
+        "get-stream": "npm:get-stream@3.0.0",
+        "duplexer3": "npm:duplexer3@0.1.4",
+        "safe-buffer": "npm:safe-buffer@5.1.2",
+        "lowercase-keys": "npm:lowercase-keys@1.0.1",
+        "is-stream": "npm:is-stream@1.1.0",
+        "url-parse-lax": "npm:url-parse-lax@1.0.0",
+        "node-unzip-response": "npm:unzip-response@2.0.1"
+      }
+    },
+    "npm:create-error-class@3.0.2": {
+      "map": {
+        "capture-stack-trace": "npm:capture-stack-trace@1.0.0"
+      }
+    },
+    "npm:url-parse-lax@1.0.0": {
+      "map": {
+        "prepend-http": "npm:prepend-http@1.0.4"
+      }
+    },
+    "npm:react-google-maps@9.4.5": {
+      "map": {
+        "warning": "npm:warning@3.0.0",
+        "scriptjs": "npm:scriptjs@2.5.8",
+        "invariant": "npm:invariant@2.2.4",
+        "prop-types": "npm:prop-types@15.6.2",
+        "babel-runtime": "npm:babel-runtime@6.26.0",
+        "lodash": "npm:lodash@4.17.10",
+        "can-use-dom": "npm:can-use-dom@0.1.0",
+        "google-maps-infobox": "npm:google-maps-infobox@2.0.0",
+        "marker-clusterer-plus": "npm:marker-clusterer-plus@2.1.4",
+        "markerwithlabel": "npm:markerwithlabel@2.0.1",
+        "recompose": "npm:recompose@0.26.0"
+      }
+    },
+    "npm:babel-runtime@6.26.0": {
+      "map": {
+        "core-js": "npm:core-js@2.5.7",
+        "regenerator-runtime": "npm:regenerator-runtime@0.11.1"
+      }
+    },
+    "npm:@types/react@16.4.6": {
+      "map": {
+        "csstype": "npm:csstype@2.5.5"
+      }
+    },
+    "npm:recompose@0.26.0": {
+      "map": {
+        "fbjs": "npm:fbjs@0.8.17",
+        "hoist-non-react-statics": "npm:hoist-non-react-statics@2.5.5",
+        "symbol-observable": "npm:symbol-observable@1.2.0",
+        "change-emitter": "npm:change-emitter@0.1.6"
+      }
+    },
+    "npm:@types/markerclustererplus@2.1.33": {
+      "map": {
+        "@types/google-maps": "npm:@types/google-maps@3.2.0"
+      }
+    },
+    "npm:@types/google-maps@3.2.0": {
+      "map": {
+        "@types/googlemaps": "npm:@types/googlemaps@3.30.11"
       }
     }
   }

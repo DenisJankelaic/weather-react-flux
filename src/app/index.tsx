@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { WeatherWindowView } from "./components/weather-window-view";
 // import { MapView } from "./components/google-map-view/map-view";
-// import { WorldMapView } from "./components/google-map-view/test/map";
+// import { WorldMapView } from "./components/google-map-view/map";
 
 import "./styles/index.css";
 

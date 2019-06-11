@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { GeolocationView } from "./geolocation-view";
 import { InputView } from "./input-view/input-view";
 import { WeatherView } from "./weather-view";

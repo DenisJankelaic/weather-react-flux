@@ -59,7 +59,9 @@ class GeolocationContainerClass extends React.Component<{}, State> {
             }
             case Abstractions.ItemStatus.Failed: {
                 return (
-                    <div> Failed </div>
+                    <div className="Failed">
+                        <img src="http://www.jmkxyy.com/failed-icon/failed-icon-22.jpg" />
+                    </div>
                 );
             }
             default: {

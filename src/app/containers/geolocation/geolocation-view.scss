@@ -16,6 +16,7 @@
         color: white;
         display: flex;
         justify-content: space-around;
+        align-items: center;
         .current-city {
             width: 15%;
             display: flex;
@@ -63,4 +64,8 @@
             background-position: 0% 91%
         }
     }
+}
+.Failed{
+    display: flex;
+    justify-content: center;
 }

@@ -1,6 +1,5 @@
 import { ApiWeatherData } from "../../contracts/weather";
 import { CountryData } from "../../contracts/country";
-
 export class SubmitActionFailed { }
 export class SubmitActionPending { }
 export class GetCountryNameActionFailed { }
@@ -27,4 +26,13 @@ export class InitGeolocation {
     public get Lat(): number {
         return this.lat;
     }
+}
+export class GetCityImage {
+    constructor(private cityImageUrl: string) {
+    }
+    public get CityImageUrl(): string {
+        return this.cityImageUrl;
+    }
+}
+export class ChangeMainWeatherButton {
 }
