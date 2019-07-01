@@ -31,6 +31,7 @@ export class InputView extends React.Component<{}, State> {
             alert("Blank input");
         } else {
             ActionsCreators.SubmitAction(city);
+            ActionsCreators.GetCityImageAction(city);
         }
     }
 
@@ -43,14 +44,15 @@ export class InputView extends React.Component<{}, State> {
     public render(): JSX.Element {
         return (
             <p>
-            <span className="input">
-                <input
-                    onChange={this.CityChange}
-                    onKeyPress={this.Submit}
-                    placeholder="Write city name here"
-                    value={this.state.inputCityName}
-                /><span></span>
-            </span>
+                <span className="input">
+                    <input
+                        onChange={this.CityChange}
+                        onKeyPress={this.Submit}
+                        placeholder="Write city name here"
+                        value={this.state.inputCityName}
+                    />
+                    <span></span>
+                </span>
             </p>);
     }
 }

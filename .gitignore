@@ -1,7 +1,7 @@
 wwwroot/**
 !wwwroot/.gitkeep
 typings/**
-src/app/api-key.ts
+src/app/shared/api-keys/**
 node_modules
 yarn.lock
 .vscode

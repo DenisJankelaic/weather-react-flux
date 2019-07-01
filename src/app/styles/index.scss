@@ -1,13 +1,15 @@
+
 .weather-window {
     display: flex;
     flex-flow: column;
     .header {
+        z-index: 2;
         .geolocation-view {
             width: 100%;
         }
     }
     .main {
-        @media only screen and (max-width: 761px) {
+        @media only screen and (max-width: 940px) {
             flex-flow: column;
             display: flex;
             align-items: center;
@@ -21,6 +23,9 @@
             align-items: center;
             flex-direction: column;
             min-width: 512px;
+            @media only screen and (max-width: 940px) {
+                display: -webkit-box;
+            }
             .input-view {
                 max-height: 100px;
                 min-height: 50px;
@@ -34,6 +39,9 @@
             max-width: 250px;
             display: flex;
             margin-top: 50px;
+            @media only screen and (max-width: 940px) {
+                margin-top: 0px;
+            }
             
         }
     }

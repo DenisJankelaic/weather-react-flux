@@ -6,7 +6,7 @@ import {
     SubmitGeolocationFailed
 } from "./actions";
 import { ApiWeatherData } from "../../contracts/weather";
-import { API_KEY } from "../../api-key";
+import { W_API_KEY } from "../../shared/api-keys/weather-api-key";
 
 export namespace ActionsCreators {
     export async function InitGeolocationAction(): Promise<void> {
@@ -27,7 +27,7 @@ export namespace ActionsCreators {
             const longitude = long.toFixed(1);
             const latitude = lat.toFixed(1);
             const weatherapicall = await
-                fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`);
+                fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${W_API_KEY}&units=metric`);
             if (weatherapicall.status === 200) {
                 const data: ApiWeatherData = await weatherapicall.json();
                 Dispatcher.dispatch(new SubmitGeolocation(data));
